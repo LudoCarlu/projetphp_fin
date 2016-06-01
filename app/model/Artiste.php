@@ -1,5 +1,5 @@
 <?php
-class artiste {
+class Artiste extends Model{
 	public $idArt;
 	public $nomArt;
 	public $prenomArt;
@@ -49,6 +49,37 @@ class artiste {
 	public function setBiographie($b) {
 		$this->biographie = $b;
 	}
+	
+	public static function setFromId( $id,$data ) {                                                                                                  
+		$db = Database::getInstance();
+		$sql = "UPDATE artiste set nomArt=:nom,prenomArt=:prenom,anneeNaiss=:dateNaiss,biographie:biographie WHERE idArt = :id";
+		$stmt = $db->prepare($sql);
+		//$stmt->setFetchMode(PDO::FETCH_CLASS, "Contact");
+		return $stmt->execute(array(
+			":id" => $id,
+			":nom"=>$data['nom'],
+			":prenom"=>$data['prenom'],
+			":dateNaiss"=>$data['dateNaiss'],
+			":biographie"=>$data['biographie'],
+			));
+		//return $stmt->fetch();
+	}
+	public static function getFromId( $id ) {
+		$db = Database::getInstance();
+		$sql = "SELECT * FROM artiste WHERE id = :id";
+		$stmt = $db->prepare($sql);
+		$stmt->setFetchMode(PDO::FETCH_CLASS, "Artiste");
+		$stmt->execute(array(":id" => $id));
+		return $stmt->fetch();
+	}
+	public static function getList() {
+		$db = Database::getInstance();
+		$sql = "SELECT * FROM artiste";
+		$stmt = $db->query($sql);
+		$stmt->setFetchMode(PDO::FETCH_CLASS, "Artiste");
+		return $stmt->fetchAll();
+	}
+	
 }
 
 ?>
