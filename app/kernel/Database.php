@@ -20,9 +20,9 @@ class Database {
 		   
    protected function __construct() {
       $this->_db = new PDO(
-         "mysql:host=localhost;dbname=mvc;charset=utf8",
-         "",
-         ""
+         "mysql:host=dwarves.iut-fbleau.fr;dbname=carlu;charset=utf8",
+         "carlu",
+         "ludo1811"
       );
    }
 }
