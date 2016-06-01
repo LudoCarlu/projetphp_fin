@@ -1,19 +1,16 @@
 <?php
 class Artiste extends Model{
-	public $idArt;
-	public $nomArt;
-	public $prenomArt;
-	public $dateNaiss;
-	public $biographie;
+	public $idArt,$nomArt,$prenomArt,$dateNaiss,$biographie;
   
 	//Constructeur
-  function __construct($nom,$prenom,$dateNaiss,$biographie) {
+  /*function __construct($id,$nom,$prenom,$dateNaiss,$biographie) {
+		$this->idArt = $id;
 		$this->nomArt = $nom;
 		$this->prenomArt = $prenom; 
 		$this->dateNaiss = $dateNaiss; 
 		$this->biographie = $biographie;
 
-  }
+  }*/
   function __toString() {
     return $this->prenomArt." ".$this->nomArt;
   }
@@ -50,9 +47,9 @@ class Artiste extends Model{
 		$this->biographie = $b;
 	}
 	
-	public static function setFromId( $id,$data ) {                                                                                                  
+	/*public static function setFromId( $id,$data ) {                                                                                                  
 		$db = Database::getInstance();
-		$sql = "UPDATE artiste set nomArt=:nom,prenomArt=:prenom,anneeNaiss=:dateNaiss,biographie:biographie WHERE idArt = :id";
+		$sql = "UPDATE artiste set nomArt=:nom,prenomArt=:prenom,anneeNaiss=:dateNaiss,biographie=:biographie WHERE idArt = :id";
 		$stmt = $db->prepare($sql);
 		//$stmt->setFetchMode(PDO::FETCH_CLASS, "Contact");
 		return $stmt->execute(array(
@@ -63,10 +60,10 @@ class Artiste extends Model{
 			":biographie"=>$data['biographie'],
 			));
 		//return $stmt->fetch();
-	}
+	}*/
 	public static function getFromId( $id ) {
 		$db = Database::getInstance();
-		$sql = "SELECT * FROM artiste WHERE id = :id";
+		$sql = "SELECT * FROM artiste WHERE idArt = $id";
 		$stmt = $db->prepare($sql);
 		$stmt->setFetchMode(PDO::FETCH_CLASS, "Artiste");
 		$stmt->execute(array(":id" => $id));
