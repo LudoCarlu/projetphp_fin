@@ -59,6 +59,32 @@ class Router {
 			  }
 			  //
 		  }
+			
+			if($parts[0] == "utilisateur")  {
+			  if (count($parts) == 1){
+				  $result["controller"] = "Utilisateur";
+				  $result['action'] = "afficherListe";
+			  }
+			  if ((count($parts) == 2) && ($parts[1] == "afficher")){
+            $result["controller"] = "Index";
+            $result["action"] = "afficherListe";
+            //$result["params"]["slug"] = $parts[1];            
+			  }
+			  if ( (count($parts) == 3) && ($parts[1] == "afficher") && ($parts[0] == "utilisateur")){
+					  $result["controller"] = "Utilisateur";
+					  $result["action"] = "afficherUtilisateur";
+					  $result["params"]["id"] = $parts[2];        
+				}
+			  //
+			  if ((count($parts) == 3) && ($parts[1] == "modifier")){
+				  $result["controller"] = "Utilisateur";
+				  $result["action"] = "modifierUtilisateur";
+				  $result["params"]["id"]= $parts[2];
+				  $result["params"]["post"]= $_POST;
+			  }
+			  //
+		  }
+
 
 	  }
 	  return $result;

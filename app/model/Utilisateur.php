@@ -1,20 +1,15 @@
 <?php
 class Utilisateur {
-	public $idU;
-	public $email;
-	public $mdpU;
-	public $pseudo;
-	public $nomU;
-	public $prenomU;
+	public $idU, $email, $mdpU, $pseudo, $nomU, $prenomU;
   
-	//Constructeur
+	/*//Constructeur
   function __construct($email,$mdpU,$pseudo,$nomU,$prenomU) {
    	$this->email = $email;
 		$this->mdpU = $mdpU;
 		$this->pseudo = $pseudo;
     $this->nomU = $nomU;
     $this->prenomU = $prenomU;
-  }
+  }*/
   function __toString() {
     return $this->prenomU." ".$this->nomU;
   }
@@ -56,6 +51,24 @@ class Utilisateur {
   public function setNom($n) {
     $this->nomU = $n;
   }
+	
+	public static function getFromId( $id ) {
+		$db = Database::getInstance();
+		$sql = "SELECT * FROM utilistateur WHERE idU = $id";
+		$stmt = $db->prepare($sql);
+		$stmt->setFetchMode(PDO::FETCH_CLASS, "Utilisateur");
+		$stmt->execute(array(":id" => $id));
+		return $stmt->fetch();
+	}
+	public static function getList() {
+		$db = Database::getInstance();
+		$sql = "SELECT * FROM utilisateur";
+		$stmt = $db->query($sql);
+		$stmt->setFetchMode(PDO::FETCH_CLASS, "Utilisateur");
+		return $stmt->fetchAll();
+	}
+	
+
 }
 
 ?>

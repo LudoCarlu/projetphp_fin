@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+	<link href="<?php echo BASE_URL.'/css/bootstrap.css';?>" rel="stylesheet" />
+
+		<title>Utilisateur</title>
+	</head>
+	<body>
+		<div class="container">
+			<div class="page-header">
+				<h1>Listes des utilisateurs</h1>
+			</div>
+			<table class="table table-stripped">
+				<thead>
+					<tr>
+						<th>Pseudo</th><th>Prénom</th><th>Nom</th><th>Email</th><th>id</th><th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php foreach($this->list as $utilisateur) : ?>
+					<tr>
+						<td>
+							<?php echo $utilisateur->pseudo;?>
+						</td>
+						<td><?php echo $utilisateur->prenomU;?>
+						</td>
+						<td><?php echo $utilisateur->nomU;?>
+						</td>
+						<td><?php echo $utilisateur->email;?>
+						</td>
+						<td><?php echo $utilisateur->idU;?>
+						</td>
+						<td><a href='<?php echo BASE_URL."/utilisateur/afficher/".$utilisateur->idU;?>' 
+								class="btn btn-info"><i class="icon icon-search"><i></a></td>
+							</tr>
+							<!--a href="contact/afficher/<?php echo $contact->id;?>"></a></td><td><?php echo $contact->prenom." ".$contact->nom;?></td></tr-->
+					<?php endforeach;?>
+				</tbody>
+			</table>
+			<footer>
+				<hr>
+				<div class="text-center">
+					<a href="<?php echo BASE_URL;?>">page d'accueil</a>
+				</div>
+			</footer>
+		</div>
+	</body>
+</html>
