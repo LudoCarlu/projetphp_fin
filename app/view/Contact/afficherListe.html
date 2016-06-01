@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+	<link href="<?php echo BASE_URL.'/css/bootstrap.css';?>" rel="stylesheet" />
+
+		<title>Contacts</title>
+	</head>
+	<body>
+		<div class="container">
+			<div class="page-header">
+				<h1>Listes des contacts</h1>
+			</div>
+			<table class="table table-stripped">
+				<thead>
+					<tr>
+						<th>Prénom</th><th>Nom</th><th>Email</th><th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php foreach($this->list as $contact) : ?>
+					<tr>
+						<td>
+							<?php echo $contact->prenom;?>
+						</td>
+						<td><?php echo $contact->nom;?>
+						</td>
+						<td><?php echo $contact->email;?></td>
+						<td><a href='<?php echo BASE_URL."/contact/afficher/".$contact->id;?>' 
+								class="btn btn-info"><i class="icon icon-search"><i></a></td>
+							</tr>
+							<!--a href="contact/afficher/<?php echo $contact->id;?>"></a></td><td><?php echo $contact->prenom." ".$contact->nom;?></td></tr-->
+					<?php endforeach;?>
+				</tbody>
+			</table>
+			<footer>
+				<hr>
+				<div class="text-center">
+					<a href="<?php echo BASE_URL;?>">page d'accueil</a>
+				</div>
+			</footer>
+		</div>
+	</body>
+</html>
