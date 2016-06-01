@@ -14,18 +14,15 @@
 			<table class="table table-stripped">
 				<thead>
 					<tr>
-						<th>Prénom</th><th>Nom</th><th>id</th><th></th>
+						<th>Nom d'artiste</th><th></th><th></th>
 					</tr>
 				</thead>
 				<tbody>
 					<?php foreach($this->list as $artiste) : ?>
 					<tr>
 						<td>
-							<?php echo $artiste->prenomArt;?>
+							<?php echo $artiste->nomArt;?>
 						</td>
-						<td><?php echo $artiste->nomArt;?>
-						</td>
-						<td><?php echo $artiste->idArt;?></td>
 						<td><a href='<?php echo BASE_URL."/artiste/afficher/".$artiste->idArt;?>' 
 								class="btn btn-info"><i class="icon icon-search"><i></a></td>
 							</tr>
