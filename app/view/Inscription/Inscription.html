@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<link href="<?php echo BASE_URL.'/css/bootstrap.css';?>" rel="stylesheet" />
+		<title>Site Internet</title>
+	</head>
+	<body>
+		<div class="container">
+			<div class="page-header">
+				<ul class="nav nav-pills pull-right">
+					<li> <a href="<?php echo BASE_URL.'/artiste';?>">Artistes</a></li>
+					<li> <a href="<?php echo BASE_URL.'/utilisateur';?>">Utilisateurs</a></li>
+					<li> <a href="<?php echo BASE_URL.'/album';?>">Albums</a></li>
+					<li> <a href="<?php echo BASE_URL.'/contact';?>">Contacts</a></li>
+					<li> <a href="#">A propos</a></li>
+					<li> <a href="#">Connexion</a></li>
+				</ul>
+				<h3 class="muted">Réseau social Musique
+			</h3>
+		</div>
+    <form method="post" action="<?php echo BASE_URL.'/inscription/verifierInscription';?>">
+			<label>Nom: <input type="text" name="nom" required/></label><br/>
+			<label>Prenom: <input type="text" name="prenom" required/></label><br/>
+			<label>Adresse e-mail: <input type="text" name="email" required/></label><br/>
+			<label>Pseudo: <input type="text" name="pseudo" required/></label><br/>
+			<label>Mot de passe: <input type="password" name="mdp1" required/></label><br/>
+			<label>Confirmation du mot de passe: <input type="password" name="mdp2" required/></label><br/>
+			
+			<input type="submit" value="M'inscrire"/>
+		</form>
+			<hr>
+			<div class="text-center">
+				<a href="<?php echo BASE_URL;?>">page d'accueil</a>
+			</div>
+		</footer>
+	</div>
+</body>
+</html>
