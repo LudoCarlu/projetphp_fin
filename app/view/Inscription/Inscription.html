@@ -20,14 +20,15 @@
 			</h3>
 		</div>
     <form method="post" action="<?php echo BASE_URL.'/inscription/verifierInscription';?>">
-			<label>Nom: <input type="text" name="nom" required/></label><br/>
-			<label>Prenom: <input type="text" name="prenom" required/></label><br/>
-			<label>Adresse e-mail: <input type="text" name="email" required/></label><br/>
-			<label>Pseudo: <input type="text" name="pseudo" required/></label><br/>
-			<label>Mot de passe: <input type="password" name="mdp1" required/></label><br/>
-			<label>Confirmation du mot de passe: <input type="password" name="mdp2" required/></label><br/>
-			
-			<input type="submit" value="M'inscrire"/>
+			<table>
+				<tr><td><label>Nom:</label></td><td><input type="text" name="nom" required/></td></tr>
+				<tr><td><label>Prenom: </label></td><td><input type="text" name="prenom" required/></td></tr>
+				<tr><td><label>Adresse e-mail: </label></td><td><input type="text" name="email" required/></td></tr>
+				<tr><td><label>Pseudo: </label></td><td><input type="text" name="pseudo" required/></td></tr>
+				<tr><td><label>Mot de passe: </label></td><td><input type="password" name="mdp1" required/></td></tr>
+				<tr><td><label>Confirmation du mot de passe: </label><td><input type="password" name="mdp2" required/></td></tr>
+				<tr><td></td><td><input type="submit" value="M'inscrire"/></td></tr>
+			</table>
 		</form>
 			<hr>
 			<div class="text-center">
