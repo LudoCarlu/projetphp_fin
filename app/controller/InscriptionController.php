@@ -6,7 +6,6 @@ class InscriptionController extends Controller {
 		$this->view->display(); 
 	}
   public function verifierInscription() {
-    echo "<p> Un administrateur prendra en charge votre demande </p>";
     extract($_POST);
     if(isset($pseudo) && isset($mdp1) && isset ($mdp2) && isset($email) && isset($prenom) && isset($nom)) {
       if($mdp1 != $mdp2) {
@@ -18,6 +17,8 @@ class InscriptionController extends Controller {
         $this->view->inscription = Inscription::envoiInscription($pseudo,$mdp1,$email,$prenom,$nom);
       } 
     }
+		echo "<p> Un administrateur prendra en charge votre demande </p>";
+		
   }
 }
 ?>
