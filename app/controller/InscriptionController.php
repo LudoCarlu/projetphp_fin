@@ -13,11 +13,11 @@ class InscriptionController extends Controller {
       }
       else {
         //Cryptage du mdp
-        $mdp1 = sha1($mdp1);
+        //$mdp1 = sha1($mdp1);
         $this->view->inscription = Inscription::envoiInscription($pseudo,$mdp1,$email,$prenom,$nom);
       } 
     }
-		echo "<p> Un administrateur prendra en charge votre demande </p>";
+		//echo "<p> Un administrateur prendra en charge votre demande </p>";
 		
   }
 }

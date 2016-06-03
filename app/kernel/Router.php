@@ -121,6 +121,17 @@ class Router {
 			  }
 			  //
 		  }
+			if($parts[0] == "connexion")  {
+			  if (count($parts) == 1){
+				  $result["controller"] = "Connexion";
+				  $result['action'] = "connexion";
+			  }
+				if ((count($parts) == 2) && ($parts[1] == "verifierConnexion")){
+        	$result["controller"] = "Connexion";
+          $result["action"] = "verifierConnexion";         
+			  }
+			  //
+		  }
 	  }
 	  return $result;
    }
