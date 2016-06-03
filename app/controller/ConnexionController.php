@@ -22,15 +22,15 @@ class ConnexionController extends Controller {
         $_SESSION['nom'] = $data['nomU'];
         $_SESSION['prenom'] = $data['prenomU'];
 
-        $message = '<p>Bienvenue '.$_SESSION['pseudo'].', vous etes maintenant connecte !</p>';  
+        $message = '<p>Bienvenue '.$_SESSION['pseudo'].', vous etes maintenant connecte !</p>';
     }
     else // Acces pas OK !
     {
         $message = "<p> Une erreur s'est produite durant votre authentification. Votre mot de passe ou pseudo est incorrecte </p>";
         /*"<p> Cliquez <a href='<?php echo BASE_URL;?>' > ici </a> pour revenir a la page d acceuil </p>"*/
-
-    }
-    echo $message;
+    }	
+		$_SESSION['message'] = $message;
+		$this->view->display();
     //echo "<p>Cliquez <a href=./public > ici </a> pour revenir à la page d accueil</p>";
   }
   }

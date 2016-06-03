@@ -15,6 +15,7 @@ class InscriptionController extends Controller {
         //Cryptage du mdp
         //$mdp1 = sha1($mdp1);
         $this->view->inscription = Inscription::envoiInscription($pseudo,$mdp1,$email,$prenom,$nom);
+				$this->view->display();
       } 
     }
 		//echo "<p> Un administrateur prendra en charge votre demande </p>";

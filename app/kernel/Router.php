@@ -117,7 +117,7 @@ class Router {
 				if ((count($parts) == 2) && ($parts[1] == "verifierInscription")){
         	$result["controller"] = "Inscription";
           $result["action"] = "verifierInscription";
-          //$result["params"]["slug"] = $parts[1];            
+					$result["params"]["slug"] = $parts[1];
 			  }
 			  //
 		  }
