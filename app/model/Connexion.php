@@ -9,20 +9,15 @@ class Connexion extends Model {
     
 		$db = Database::getInstance();
 		$sql = "SELECT * FROM utilisateur WHERE pseudo = :pseudo";
+		$sql2 = "SELECT * FROM administrateur WHERE pseudo = :pseudo";
     $stmt = $db->prepare($sql);
-    $stmt->bindValue(':pseudo',$pseudo,PDO::PARAM_STR); 
+		$stmt2 = $db->prepare($sql2);
+    $stmt->bindValue(':pseudo',$pseudo,PDO::PARAM_STR);
+		$stmt2->bindValue(':pseudo',$pseudo,PDO::PARAM_STR);
     $stmt->execute();
+		$stmt2->execute();
     $resultat = $stmt->fetch();
-    
-    
-    $sql2 = "SELECT idAdmin,pseudo,mdpAdmin FROM administrateur WHERE pseudo = :pseudo";
-    $stmt2 = $db->prepare($sql2);
-    $stmt2->bindValue(':pseudo',$pseudo,PDO::PARAM_STR);
-    $stmt2->execute();
     $resultat2 = $stmt2->fetch();
-    echo $resultat2['idAdmin'];
-    echo $resultat2['pseudo'];
-    echo $resultat2['mdpAdmin'];
     
     if ($resultat['mdpU'] == $mdp ) {
       echo "Utilisateur";
@@ -36,7 +31,7 @@ class Connexion extends Model {
     if ($resultat2['mdpAdmin'] == $mdp) {
       echo "Admin";
       $_SESSION['pseudo'] = $resultat2['pseudo'];
-      $_SESSION['id'] = $resultat2['idAdmin'];
+      $_SESSION['id'] = $resultat2['idA'];
       $_SESSION['droit'] = 'administrateur';
       $message = '<p>Bienvenue '.$_SESSION['pseudo'].', vous etes maintenant connecte !</p>';
     }
