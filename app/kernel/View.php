@@ -28,6 +28,13 @@ class View {
       return isset($this->data[$key]);
    }
 
+	public function redirection() {
+		$viewFile = ROOT . "/app/view/" . $this->_route["controller"] . "/" . $this->_route["redirection"] . ".html";
+		if( file_exists( $viewFile ) )
+    	include($viewFile);
+    else
+    	throw new DomainException("Vue introuvable - " . $viewFile);
+	}
 
 
 
