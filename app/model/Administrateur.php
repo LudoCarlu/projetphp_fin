@@ -24,7 +24,6 @@ class Administrateur extends Model {
 		$stmt->bindValue(':pseudo',$pseudo,PDO::PARAM_STR);
 		$stmt->execute();
 		$res = $stmt->fetch();
-		echo $res['nom'];
 		
 		//On l'insert dans la base utilisateur
 		$sql = "INSERT INTO utilisateur (email,mdpU,pseudo,nomU,prenomU) VALUES (:email,:mdp,:pseudo,:nom,:prenom)";

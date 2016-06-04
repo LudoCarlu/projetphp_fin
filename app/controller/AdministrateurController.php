@@ -9,6 +9,8 @@ class AdministrateurController extends Controller {
 	public function ajouterUtilisateur() {
 		$pseudo= $this->route["params"]["pseudo"];
 		Administrateur::ajouterDemande($pseudo);
+		$this->view->list = Administrateur::getInscription();
+		$this->view->redirection();
 	}
 
   

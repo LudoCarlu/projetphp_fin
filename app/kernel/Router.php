@@ -137,11 +137,13 @@ class Router {
 				  $result["controller"] = "Administrateur";
 				  $result['action'] = "afficherInscription";
 					
+					
 			  }
 				if ((count($parts) == 3 ) && ($parts[0] == "administrateur") && ($parts[1] == "ajouterUtilisateur")) {
 					$result["controller"] = "Administrateur";
 					$result["action"] = "ajouterUtilisateur";
 					$result["params"]["pseudo"] = $parts[2];
+					$result["redirection"] = "afficherInscription";
 				}
 			  //
 		  }
