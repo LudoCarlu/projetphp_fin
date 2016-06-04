@@ -111,12 +111,38 @@ class Router {
 				  $result["params"]["id"]= $parts[2];
 				  $result["params"]["post"]= $_POST;
 			  }
+			}
+			  //
+			if($parts[0] == "inscription")  {
+			  if (count($parts) == 1){
+				  $result["controller"] = "Inscription";
+				  $result['action'] = "Inscription";
+			  }
+				if ((count($parts) == 2) && ($parts[1] == "verifierInscription")){
+        	$result["controller"] = "Inscription";
+          $result["action"] = "verifierInscription";
+					$result["params"]["slug"] = $parts[1];
+			  }
 			  //
 		  }
+			if($parts[0] == "connexion")  {
+			  if (count($parts) == 1){
+				  $result["controller"] = "Connexion";
+				  $result['action'] = "connexion";
+			  }
+				if ((count($parts) == 2) && ($parts[1] == "verifierConnexion")){
+        	$result["controller"] = "Connexion";
+          $result["action"] = "verifierConnexion";         
+			  }
+			  //
+		  }
+<<<<<<< HEAD
 		
 
 
 
+=======
+>>>>>>> 216eb0f02c59c3a45263ee88aaad229f9d88fcb6
 	  }
 	  return $result;
    }

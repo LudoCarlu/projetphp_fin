@@ -15,21 +15,21 @@
 					<li> <a href="<?php echo BASE_URL.'/contact';?>">Contacts</a></li>
 					<li> <a href="#">A propos</a></li>
 					<li> <a href="<?php echo BASE_URL.'/connexion';?>">Connexion</a></li>
-					<li> <a href="<?php echo BASE_URL.'/inscription';?>">Inscription</a></li>
 				</ul>
 				<h3 class="muted">Réseau social Musique
 			</h3>
 		</div>
-		<p class="lead">Bienvenue sur le site n°1 de référencement musical.</br>
-		Le site est actuellement en phase de construction, mais il sera bientôt possible de :</br>
-		<ul>
-  		<li>Posséder son propre compte utilisateur.</li>
-  		<li>Donner votre avis sur un album ou un artiste en commentaire, ou en notant.</li>
- 			<li>Ajouter vos artistes et albums préférés dans notre base de données.</li>
-		</ul>
-		</br>
-			À bientôt !
-		</p>
+    <form method="post" action="<?php echo BASE_URL.'/inscription/verifierInscription';?>">
+			<table>
+				<tr><td><label>Nom:</label></td><td><input type="text" name="nom" required/></td></tr>
+				<tr><td><label>Prenom: </label></td><td><input type="text" name="prenom" required/></td></tr>
+				<tr><td><label>Adresse e-mail: </label></td><td><input type="text" name="email" required/></td></tr>
+				<tr><td><label>Pseudo: </label></td><td><input type="text" name="pseudo" required/></td></tr>
+				<tr><td><label>Mot de passe: </label></td><td><input type="password" name="mdp1" required/></td></tr>
+				<tr><td><label>Confirmation du mot de passe: </label><td><input type="password" name="mdp2" required/></td></tr>
+				<tr><td></td><td><input type="submit" value="M'inscrire"/></td></tr>
+			</table>
+		</form>
 			<hr>
 			<div class="text-center">
 				<a href="<?php echo BASE_URL;?>">page d'accueil</a>
