@@ -57,7 +57,16 @@ class Router {
 				  $result["params"]["id"]= $parts[2];
 				  $result["params"]["post"]= $_POST;
 			  }
-			  //
+			  if ((count($parts) == 2) && ($parts[1] == "ajouterArtiste")) {
+				 $result["controller"] = "Artiste";
+				 $result["action"] = "ajouterArtiste";
+				}
+				if ((count($parts) == 2) && ($parts[1] == "envoyerArtiste")) {
+				 $result["controller"] = "Artiste";
+				 $result["action"] = "envoyerArtiste";
+				 $result["params"]["post"]= $_POST;
+				 $result["redirection"] = "ajouterArtiste";
+				}
 		  }
 			
 			if($parts[0] == "utilisateur")  {

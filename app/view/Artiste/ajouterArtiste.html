@@ -6,31 +6,30 @@
    <link href='<?php echo BASE_URL."/css/bootstrap.css";?>' rel="stylesheet" />
 </head>
 <body>
-	<div class="container">
-		<div class="page-header">
-			<h1>Ajouter un nouvel artiste</h1>
-		</div>
-   <!--h2><?php echo $this->contact->toHTML();?></h2-->	
-	<form action="<?php echo BASE_URL. '/artiste/envoyerArtiste';?>" method="post">
-		<table>
-			<tr>
-				<td><label for="nomArt">Nom d'artiste</label></td><td><input type="text" placeholder="Nom" name="nomArt" required><br></td>
-			</tr>
-			<tr>
-				<td><label for="anneeNaiss">Annee de naissance</label></td><td><input type="text" placeholder="Annee de naissance" name="anneeNaiss"><br></td>
-			</tr>
-			<tr>
-				<td><label for="biographie">Biographie</label></td><td><textarea rows="4" cols="50" placeholder="Ajouter la biographie de l'artiste"></textarea></td>
-			</tr>
-			<tr>
-				<td><input type="submit" value="Ajouter"></td>
-			</tr>
-		</table>
-	</form> 
-   	
+ <div class="container">
+  <div class="page-header">
+   <h1>Ajouter un nouvel artiste</h1>
+  </div>
+ <form action="<?php echo BASE_URL. '/artiste/envoyerArtiste';?>" method="post">
+  <table>
+   <tr>
+    <td><label for="nomArt">Nom d'artiste</label></td><td><input type="text" placeholder="Nom" name="nomArt" required><br></td>
+   </tr>
+   <tr>
+    <td><label for="anneeNaiss">Annee de naissance</label></td><td><input type="text" placeholder="Annee de naissance" name="anneeNaiss"><br></td>
+   </tr>
+   <tr>
+    <td><label for="biographie">Biographie</label></td><td><textarea rows="4" cols="50" placeholder="Ajouter la biographie de l'artiste" name="biographie"></textarea></td>
+   </tr>
+   <tr>
+    <td><input type="submit" value="Ajouter"></td>
+   </tr>
+  </table>
+ </form> 
+    
    <footer>
-	   <hr>
-	   <p class="text-center"><a href='<?php echo BASE_URL?>'>retour à la page d'acceuil</a></p>
+    <hr>
+    <p class="text-center"><a href='<?php echo BASE_URL?>'>retour à la page d'acceuil</a></p>
    </footer>
    </div>
 </body>
