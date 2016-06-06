@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,12 +9,18 @@
 <body>
 	<div class="container"> 
 		<div class="page-header">
+<<<<<<< HEAD
 				<h1><?php echo $this->artiste->nomArt;?></h1>
 			</div>
 		<p><strong><h3>
 			<I>Biographie</I>
 			</h3></strong></br>
 			<?php echo $this->artiste->biographie;?></p></br>
+=======
+			<h1><?php echo $this->artiste->prenomArt." ".$this->artiste->nomArt;?></h1>
+		</div>
+		<p><strong>Biographie : <?php echo ($this->artiste->biographie);?></strong></p><br>
+>>>>>>> c1fb88fc340592bc7a6730f9da9fbfded481ad23
    <footer>
 	   <hr>
 	   <p class="text-center"><a href='<?php echo BASE_URL?>'>retour à la page d'acceuil</a></p>

@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -9,8 +10,27 @@
 	<body>
 		<div class="container">
 			<div class="page-header">
+				<ul class="nav nav-pills pull-right">
+					<li> <a href="<?php echo BASE_URL.'/artiste';?>">Artistes</a></li>
+					<li> <a href="<?php echo BASE_URL.'/utilisateur';?>">Utilisateurs</a></li>
+					<li> <a href="<?php echo BASE_URL.'/album';?>">Albums</a></li>
+					<li> <a href="<?php echo BASE_URL.'/contact';?>">Contacts</a></li>
+					<?php
+					if (isset($_SESSION['droit'])) {
+						echo $_SESSION['droit'];
+						$co = "Deconnexion";
+						$lien = BASE_URL.'/deconnexion';
+					} else {
+						$co = "Connexion";
+						$lien = BASE_URL.'/connexion';
+					}
+					?>
+					<li> <a href="<?php echo $lien;?>"><?php echo $co ?></a></li>
+					<li> <a href="<?php echo BASE_URL.'/inscription';?>">Inscription</a></li>
+				</ul>
 				<h1>Listes des artistes</h1>
 			</div>
+			<?php if(isset($_SESSION['droit'])) { ?>
 			<table class="table table-stripped">
 				<thead>
 					<tr>
@@ -27,6 +47,12 @@
 				</tbody>
 			</table>
 			<a href='<?php echo BASE_URL."/artiste/ajouterArtiste"?>' class="ajoutNew">Ajouter un nouvel artiste</a>
+			<?php } //Fin du if $_SESSION(['droit'])
+			else {
+				echo "<p> Pour voir les artistes il vous faut etre inscrit et connecté </p>"; ?>
+					<p> <a href="<?php echo $lien;?>">-> Pour vous connecter</a></p>
+					<p> <a href="<?php echo BASE_URL.'/inscription';?>"> -> Par encore inscrit c'est par ici</a></p>
+			<?php } //Fin else ?>
 			<footer>
 				<hr>
 				<div class="text-center">

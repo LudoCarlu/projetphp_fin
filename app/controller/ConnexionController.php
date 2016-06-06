@@ -11,5 +11,11 @@ class ConnexionController extends Controller {
 			$this->view->display();
   	}
   }
+	public function deconnexion() {
+			session_start();
+			session_unset();
+			session_destroy();
+			$this->view->display();
+	}
 }
 ?>

@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -12,8 +13,17 @@
 					<li> <a href="<?php echo BASE_URL.'/artiste';?>">Artistes</a></li>
 					<li> <a href="<?php echo BASE_URL.'/album';?>">Albums</a></li>
 					<li> <a href="<?php echo BASE_URL.'/contact';?>">Contacts</a></li>
-					<li> <a href="#">A propos</a></li>
-					<li> <a href="<?php echo BASE_URL.'/connexion';?>">Connexion</a></li>
+					<?php
+					if (isset($_SESSION['droit'])) {
+						echo $_SESSION['droit'];
+						$co = "Deconnexion";
+						$lien = BASE_URL.'/deconnexion';
+					} else {
+						$co = "Connexion";
+						$lien = BASE_URL.'/connexion';
+					}
+					?>
+					<li> <a href="<?php echo $lien;?>"><?php echo $co ?></a></li>
 					<li> <a href="<?php echo BASE_URL.'/inscription';?>">Inscription</a></li>
 				</ul>
 				<h3 class="muted">Réseau social Musique
@@ -31,7 +41,9 @@
 		</p>
 			<hr>
 			<p>
-				<a href="<?php echo BASE_URL.'/administrateur';?>">Listes des demandes d'inscription</a>
+				<?php if(isset($_SESSION['droit']) && $_SESSION['droit'] == "administrateur") { ?>
+					<a href="<?php echo BASE_URL.'/administrateur';?>">Listes des demandes d'inscription</a>
+				<?php } ?>
 			</p>
 			<div class="text-center">
 				<a href="<?php echo BASE_URL;?>">page d'accueil</a>
