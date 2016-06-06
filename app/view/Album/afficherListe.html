@@ -14,25 +14,24 @@
 			<table class="table table-stripped">
 				<thead>
 					<tr>
-						<th>Titre de l'album</th><th>Artiste</th><th></th>
+						<th>Titre de l'album</th><th>Artiste</th><th>Genre</th><th></th>
 					</tr>
 				</thead>
 				<tbody>
 					<?php foreach($this->list as $album) : ?>
 					<tr>
-						<td>
-							<?php echo $album->nomAl;?>
-						</td>
+						<td><?php echo $album->nomAl;?></td>
+						<td><?php echo $album->nomArt;?></td>
+						<td><?php echo $album->genre;?></td>
 						<td><a href='<?php echo BASE_URL."/album/afficher/".$album->idAl;?>' 
-								class="btn btn-info"><i class="icon icon-search"><i></a></td>
-							</tr>
-							<!--a href="contact/afficher/<?php echo $contact->id;?>"></a></td><td><?php echo $contact->prenom." ".$contact->nom;?></td></tr-->
+								class="btn btn-info"><i class="icon icon-search"><i></a>
+						</td>
+					</tr>
 					<?php endforeach;?>
 				</tbody>
 			</table>
 			<a href="#" class="ajoutNew">Ajouter un nouvel album</a>
 			<footer>
-				<hr>
 				<div class="text-center">
 					<a href="<?php echo BASE_URL;?>">page d'accueil</a>
 				</div>

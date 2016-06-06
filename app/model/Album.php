@@ -48,15 +48,16 @@ class Album {
 		$stmt->execute(array(":id" => $id));
 		return $stmt->fetch();
 	}
-	public static function getList() {
-		$db = Database::getInstance();
-		$sql = "SELECT * FROM album";
-		$stmt = $db->query($sql);
-		$stmt->setFetchMode(PDO::FETCH_CLASS, "Album");
-		return $stmt->fetchAll();
-	}
 	
-
+		public static function getList() {
+		$db = Database::getInstance();
+		$sql = "SELECT Art.nomArt,Al.nomAl,Al.dateAl
+		FROM artiste Art JOIN album Al ON (Art.idArt=Al.idArt);";
+		$stmt = $db->prepare($sql);
+		//$stmt->setFetchMode(PDO::FETCH_CLASS, "Album");
+		return $stmt->fetchAll(PDO::FETCH_ASSOC);
+	
+	}
 }
 
 ?>
