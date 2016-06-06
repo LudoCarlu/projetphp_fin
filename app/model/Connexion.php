@@ -4,8 +4,6 @@ class Connexion extends Model {
 	public $pseudo, $mdp ;
   
 	public static function verifierConnexion($pseudo,$mdp) {
-    //echo $pseudo;
-    //echo $mdp;
     
 		$db = Database::getInstance();
 		$sql = "SELECT * FROM utilisateur WHERE pseudo = :pseudo";
@@ -20,16 +18,16 @@ class Connexion extends Model {
     $resultat2 = $stmt2->fetch();
     
     if ($resultat['mdpU'] == $mdp ) {
+			session_start();
       echo "Utilisateur";
       $_SESSION['pseudo'] = $resultat['pseudo'];
       $_SESSION['id'] = $resultat['idU'];
-      $_SESSION['nom'] = $resultat['nomU'];
-      $_SESSION['prenom'] = $resultat['prenomU'];
       $_SESSION['droit'] = 'utilisateur';
       $message = '<p>Bienvenue '.$_SESSION['pseudo'].', vous etes maintenant connecte !</p>';
     }
     if ($resultat2['mdpAdmin'] == $mdp) {
       echo "Admin";
+			session_start();
       $_SESSION['pseudo'] = $resultat2['pseudo'];
       $_SESSION['id'] = $resultat2['idA'];
       $_SESSION['droit'] = 'administrateur';

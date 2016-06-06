@@ -141,6 +141,13 @@ class Router {
 			  }
 			  //
 		  }
+			if($parts[0] == "deconnexion") {
+				if (count($parts) == 1){
+					$result["controller"] = "Connexion";
+					$result['action'] = "deconnexion";
+				}
+			}
+			
 			if($parts[0] == "administrateur")  {
 			  if (count($parts) == 1){
 				  $result["controller"] = "Administrateur";

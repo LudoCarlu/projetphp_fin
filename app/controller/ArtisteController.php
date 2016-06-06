@@ -24,7 +24,7 @@ class ArtisteController extends Controller {
    else {
    echo "Le champ 'Nom d'artiste' n'a pas ete correctement remplie";
   }
-  $this->view->redirection();
+  header('location: ajouterArtiste');
  }
 }
 

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -13,15 +14,22 @@
 					<li> <a href="<?php echo BASE_URL.'/utilisateur';?>">Utilisateurs</a></li>
 					<li> <a href="<?php echo BASE_URL.'/album';?>">Albums</a></li>
 					<li> <a href="<?php echo BASE_URL.'/contact';?>">Contacts</a></li>
-					<li> <a href="#">A propos</a></li>
-          <!--li> <a href="<?php echo BASE_URL.'/connexion';?>">Connexion</a></li-->
-          <!--li> <a href="<?php echo BASE_URL.'/deconnexion';?>">Deconnexion</a></li-->
+					<?php 
+					if (isset($_SESSION['pseudo'])) {
+						$co = "Deconnexion";
+						$lien = BASE_URL.'/deconnexion';
+					} else {
+						$co = "Connexion";
+						$lien = BASE_URL.'/connexion';
+					}
+					?>
+					<li> <a href="<?php echo $lien;?>"><?php echo $co ?></a></li>
 				</ul>
 				<h3 class="muted">Réseau social Musique
 			</h3>
 		</div>
       <p>
-        Bonjour <?php echo $_SESSION['message'] ?> 
+        Bonjour <?php echo $_SESSION['message']; ?> 
       </p>
 			<hr>
 			<div class="text-center">
