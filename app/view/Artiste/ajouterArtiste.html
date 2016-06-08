@@ -1,37 +1,66 @@
 <?php session_start(); ?>
 <!DOCTYPE html>
 <html>
+
 <head>
-   <meta charset="utf-8"/>
-   <title>Ajouter un artiste</title>
-   <link href='<?php echo BASE_URL."/css/bootstrap.css";?>' rel="stylesheet" />
+  <meta charset="utf-8" />
+  <title>Ajouter un artiste</title>
+  <link href='<?php echo BASE_URL."/css/bootstrap.css";?>' rel="stylesheet" />
 </head>
+
 <body>
- <div class="container">
-  <div class="page-header">
-   <h1>Ajouter un nouvel artiste</h1>
+  <div class="container">
+    <div class="page-header">
+      <ul class="nav nav-pills pull-right">
+        <li> <a href="<?php echo BASE_URL.'/artiste';?>">Artistes</a></li>
+        <li> <a href="<?php echo BASE_URL.'/album';?>">Albums</a></li>
+        <li> <a href="<?php echo BASE_URL.'/contact';?>">Contacts</a></li>
+        <?php
+      if (isset($_SESSION['droit'])) {
+        $co = "Deconnexion";
+        $lien = BASE_URL.'/deconnexion';
+      } else {
+        $co = "Connexion";
+        $lien = BASE_URL.'/connexion';
+      }
+
+      if(!isset($_SESSION['droit'])) {
+      ?>
+          <li> <a href="<?php echo BASE_URL.'/inscription';?>">Inscription</a></li>
+          <?php } ?>
+          <li>
+            <a href="<?php echo $lien;?>">
+              <?php echo $co ?>
+            </a>
+          </li>
+      </ul>
+      <h1>Ajouter un nouvel artiste</h1>
+    </div>
+    <form action="<?php echo BASE_URL. '/artiste/envoyerArtiste';?>" method="post">
+      <table>
+        <tr>
+          <td><label for="nomArt">Nom d'artiste</label></td>
+          <td><input type="text" placeholder="Nom" name="nomArt" required><br></td>
+        </tr>
+        <tr>
+          <td><label for="anneeNaiss">Date de naissance</label></td>
+          <td><input type="date" placeholder="aaaa-mm-jj" name="anneeNaiss"><br></td>
+        </tr>
+        <tr>
+          <td><label for="biographie">Biographie</label></td>
+          <td><textarea rows="4" cols="50" placeholder="Ajouter la biographie de l'artiste" name="biographie"></textarea></td>
+        </tr>
+        <tr>
+          <td><input type="submit" class="ajoutNew" value="Ajouter"></td>
+        </tr>
+      </table>
+    </form>
+
+    <footer>
+      <hr>
+      <p class="text-center"><a href='<?php echo BASE_URL?>'>retour à la page d'acceuil</a></p>
+    </footer>
   </div>
- <form action="<?php echo BASE_URL. '/artiste/envoyerArtiste';?>" method="post">
-  <table>
-   <tr>
-    <td><label for="nomArt">Nom d'artiste</label></td><td><input type="text" placeholder="Nom" name="nomArt" required><br></td>
-   </tr>
-   <tr>
-    <td><label for="anneeNaiss">Annee de naissance</label></td><td><input type="text" placeholder="Annee de naissance" name="anneeNaiss"><br></td>
-   </tr>
-   <tr>
-    <td><label for="biographie">Biographie</label></td><td><textarea rows="4" cols="50" placeholder="Ajouter la biographie de l'artiste" name="biographie"></textarea></td>
-   </tr>
-   <tr>
-    <td><input type="submit" class="ajoutNew" value="Ajouter"></td>
-   </tr>
-  </table>
- </form> 
-    
-   <footer>
-    <hr>
-    <p class="text-center"><a href='<?php echo BASE_URL?>'>retour à la page d'acceuil</a></p>
-   </footer>
-   </div>
 </body>
+
 </html>

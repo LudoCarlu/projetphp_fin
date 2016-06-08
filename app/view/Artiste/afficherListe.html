@@ -12,23 +12,24 @@
 			<div class="page-header">
 				<ul class="nav nav-pills pull-right">
 					<li> <a href="<?php echo BASE_URL.'/artiste';?>">Artistes</a></li>
-					<li> <a href="<?php echo BASE_URL.'/utilisateur';?>">Utilisateurs</a></li>
 					<li> <a href="<?php echo BASE_URL.'/album';?>">Albums</a></li>
 					<li> <a href="<?php echo BASE_URL.'/contact';?>">Contacts</a></li>
 					<?php
 					if (isset($_SESSION['droit'])) {
-						echo $_SESSION['droit'];
 						$co = "Deconnexion";
 						$lien = BASE_URL.'/deconnexion';
 					} else {
 						$co = "Connexion";
 						$lien = BASE_URL.'/connexion';
 					}
+					if (!isset($_SESSION['droit'])) {
 					?>
-					<li> <a href="<?php echo $lien;?>"><?php echo $co ?></a></li>
 					<li> <a href="<?php echo BASE_URL.'/inscription';?>">Inscription</a></li>
+					<?php } ?>
+					<li> <a href="<?php echo $lien;?>"><?php echo $co ?></a></li>
+					
 				</ul>
-				<h1>Listes des artistes</h1>
+				<h1>Liste des artistes</h1>
 			</div>
 			<?php if(isset($_SESSION['droit'])) { ?>
 			<table class="table table-stripped">
@@ -41,7 +42,7 @@
 					<?php foreach($this->list as $artiste) : ?>
 					<tr>
 						<td><?php echo $artiste->nomArt;?></td>
-						<td><a href='<?php echo BASE_URL."/artiste/afficher/".$artiste->idArt;?>'class="btn btn-info"><i class="icon icon-search"><i></a></td>
+						<td><a href='<?php echo BASE_URL."/artiste/afficher/".$artiste->idArt;?>' class="btn btn-info"><i class="icon icon-search"></i></a></td>
 					</tr>
 					<?php endforeach;?>
 				</tbody>

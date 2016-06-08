@@ -20,12 +20,14 @@ class Album {
 	}
 	public static function envoyerAlbum($nomAl,$nomArt,$dateAl,$genre) {
 		$db = Database::getInstance();
+		$residArt = Artiste::getFromNom($nomArt);
+		$idArt = $residArt->idArt;
+		
 		$sql = "INSERT INTO album (idArt,nomAl,dateAl,genre) VALUES (:idArt,:nomAl,:dateAl,:genre)";
 		$stmt = $db->prepare($sql);
 		//$stmt->setFetchMode(PDO::FETCH_CLASS, "Artiste");
-		echo "Merci pour votre ajout !";
 		return $stmt->execute(array(
-		 'nomArt' => $nomArt,
+		 'idArt' => $idArt,
 		 'nomAl'=>$nomAl,
 		 'dateAl'=>$dateAl,
 		 'genre'=>$genre

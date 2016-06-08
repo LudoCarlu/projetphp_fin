@@ -16,6 +16,7 @@ class ArtisteController extends Controller {
  public function ajouterArtiste(){
   $this->view->display();
  }
+  
  public function envoyerArtiste() {
   $data = $this->route["params"]["post"];
     if(isset($data['nomArt']) && isset($data['anneeNaiss']) && isset($data['biographie'])) {

@@ -9,12 +9,28 @@
 <body>
 	<div class="container"> 
 		<div class="page-header">
-				<h1><?php echo $this->artiste->nomArt;?></h1>
-			</div>
-		<p><strong><h3>
-			<I>Biographie</I>
-			</h3></strong></br>
-			<?php echo $this->artiste->biographie;?></p></br>
+			<ul class="nav nav-pills pull-right">
+				<li> <a href="<?php echo BASE_URL.'/artiste';?>">Artistes</a></li>
+				<li> <a href="<?php echo BASE_URL.'/album';?>">Albums</a></li>
+				<li> <a href="<?php echo BASE_URL.'/contact';?>">Contacts</a></li>
+				<?php
+				if (isset($_SESSION['droit'])) {
+					$co = "Deconnexion";
+					$lien = BASE_URL.'/deconnexion';
+				} else {
+					$co = "Connexion";
+					$lien = BASE_URL.'/connexion';
+				}
+				?>
+				<li> <a href="<?php echo $lien;?>"><?php echo $co ?></a></li>
+			</ul>
+			<h3><?php echo $this->artiste->nomArt;?></h3>
+		</div>
+			<table class="table table-stripped">
+				<tr><td>Nom de l'artiste</td><td><?php echo $this->artiste->idArt." ".$this->artiste->nomArt ;?></td></tr>
+				<tr><td>Date de naissance</td><td><?php echo $this->artiste->dateNaiss;?></td></tr>
+				<tr><td>Biographie </td><td><?php echo $this->artiste->biographie?></td></tr>
+			</table>
    <footer>
 	   <hr>
 	   <p class="text-center"><a href='<?php echo BASE_URL?>'>retour à la page d'acceuil</a></p>

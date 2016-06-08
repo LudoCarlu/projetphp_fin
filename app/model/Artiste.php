@@ -18,15 +18,24 @@ class Artiste extends Model{
 		return $stmt->fetchAll();
 	}
 	
-	public static function envoyerArtiste($nomArt,$anneeNaiss,$biographie) {
+	public static function getFromNom ( $nom ) {
 		$db = Database::getInstance();
-		$sql = "INSERT INTO artiste (nomArt,anneeNaiss,biographie) VALUES (:nomArt,:anneeNaiss,:biographie)";
+		$sql = "SELECT * FROM artiste WHERE nomArt = :nom";
+		$stmt = $db->prepare($sql);
+		$stmt->setFetchMode(PDO::FETCH_CLASS, "Artiste");
+		$stmt->execute(array(":nom" => $nom));
+		return $stmt->fetch();
+	}
+	
+	public static function envoyerArtiste($nomArt,$dateNaiss,$biographie) {
+		$db = Database::getInstance();
+		$sql = "INSERT INTO artiste (nomArt,dateNaiss,biographie) VALUES (:nomArt,:dateNaiss,:biographie)";
 		$stmt = $db->prepare($sql);
 		//$stmt->setFetchMode(PDO::FETCH_CLASS, "Artiste");
 		echo "Merci pour votre ajout ";
 		return $stmt->execute(array(
 		 'nomArt' => $nomArt,
-		 'anneeNaiss'=>$anneeNaiss,
+		 'dateNaiss'=>$dateNaiss,
 		 'biographie'=>$biographie
 		 ));
  }
