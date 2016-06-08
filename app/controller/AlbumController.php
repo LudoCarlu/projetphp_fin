@@ -10,6 +10,7 @@ class AlbumController extends Controller {
 	public function afficherAlbum() {
 		$id = $this->route["params"]["id"];
 		$this->view->album = Album::getFromId($id);
+		$this->view->com = Commentaire::getListeFromAlbum($id);
 		$this->view->display();
 	}
 	
