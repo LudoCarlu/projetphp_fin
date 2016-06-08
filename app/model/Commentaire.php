@@ -17,10 +17,24 @@ class Commentaire extends Model {
 		$stmt->setFetchMode(PDO::FETCH_CLASS, "Commentaire");
 		return $stmt->fetchAll();
 	}
-  public static function ajouterCommentaire() {
+  public static function ajouterCommentaire($idAl,$idU,$comment) {
     $db = Database::getInstance();
-    $sql = "INSERT INTO commentaire (idAl,idU) VALUES (:idAl,:idU)";
+    $sql = "INSERT INTO commentaire (idAl,idU,commentaire,date) VALUES (:idAl,:idU,:commentaire,:date)";
     $stmt = $db->prepare($sql);
+    $stmt->setFetchMode(PDO::FETCH_CLASS, "Commentaire");
+    $aujourdhui = getdate();
+    $d = $aujourdhui['mday'];
+    $m = $aujourdhui['mon'];
+    $y = $aujourdhui['year'];
+    $heure = $aujourdhui['hours'];
+    $min = $aujourdhui['minutes'];
+    $sec = $aujourdhui['seconds'];
+    return $stmt->execute(array(
+      ':idAl' => $idAl,
+      ':idU' => $idU,
+      ':commentaire' =>$comment,
+      ':date' => $y."-".$m."-".$d." ".$heure.":".$min.":".$sec
+    ));
   }
 }
 ?>

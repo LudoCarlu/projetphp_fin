@@ -8,7 +8,22 @@
 	<body>
 		<div class="container">
 			<div class="page-header">
-				<h2><?php echo $this->album->nomAl;?></h2>
+				<ul class="nav nav-pills pull-right">
+					<li> <a href="<?php echo BASE_URL.'/artiste';?>">Artistes</a></li>
+					<li> <a href="<?php echo BASE_URL.'/album';?>">Albums</a></li>
+					<li> <a href="<?php echo BASE_URL.'/contact';?>">Contacts</a></li>
+					<?php
+					if (isset($_SESSION['droit'])) {
+						$co = "Deconnexion";
+						$lien = BASE_URL.'/deconnexion';
+					} else {
+						$co = "Connexion";
+						$lien = BASE_URL.'/connexion';
+					}
+					?>
+					<li> <a href="<?php echo $lien;?>"><?php echo $co ?></a></li>
+				</ul>
+				<h3><?php echo $this->album->nomAl;?></h3>
 			</div>
 			<table class="table table-stripped">
 				<tr><td>Titre de l'album</td><td><?php echo $this->album->nomAl;?></td></tr>
@@ -19,9 +34,9 @@
 			</table>
 			<br>
 			<legend><h4>Commentaires</h4></legend>
-			<form method="post">
+			<form method="post" action='<?php echo BASE_URL."/album/afficher/".$this->album->idAl;?>'>
 				<table>
-					<tr><td><textarea rows="3" cols="200" placeholder="Ajouter un commentaire.." name="comment"></textarea></td></tr>
+					<tr><td><textarea rows="3" cols="200" placeholder="Ajouter un commentaire.." name="commentaire"></textarea></td></tr>
 					<tr><td><input type="submit" value="Envoyer" /></td></tr>
 				</table>
 			</form>

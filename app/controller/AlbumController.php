@@ -8,9 +8,16 @@ class AlbumController extends Controller {
 	}
   
 	public function afficherAlbum() {
-		$id = $this->route["params"]["id"];
-		$this->view->album = Album::getFromId($id);
-		$this->view->com = Commentaire::getListeFromAlbum($id);
+		//On recup la session
+		session_start();
+		$idAl = $this->route["params"]["id"];
+		if(isset($_POST['commentaire'])) {
+			$comment = $_POST['commentaire'];
+			$idU = $_SESSION['id'];
+			Commentaire::ajouterCommentaire($idAl,$idU,$comment);
+		}
+		$this->view->album = Album::getFromId($idAl);
+		$this->view->com = Commentaire::getListeFromAlbum($idAl);
 		$this->view->display();
 	}
 	

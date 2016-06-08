@@ -31,17 +31,7 @@ class Album {
 		 'genre'=>$genre
 		 ));
  	}
-	
-	public static function ajouterCommentaire($data) {
-		$db = Database::getInstance();
-    $sql = "INSERT INTO commentaire (idAl,idU,commentaire) VALUES (:idAl,:idU,:commentaire)";
-    $stmt = $db->prepare($sql);
-		return $stmt->execute(array(
-			'idAl' => $data['idAl'],
-			'idU' => $data['idU'],
-			'commentaire' => $data['comment']
-		));
-	}
+
 }
 
 ?>
