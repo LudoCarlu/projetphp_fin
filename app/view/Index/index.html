@@ -21,9 +21,10 @@
 						$co = "Connexion";
 						$lien = BASE_URL.'/connexion';
 					}
-					?>
-					<li> <a href="<?php echo $lien;?>"><?php echo $co ?></a></li>
-					<li> <a href="<?php echo BASE_URL.'/inscription';?>">Inscription</a></li>
+					if(!isset($_SESSION['droit'])) { ?>
+						<li> <a href="<?php echo BASE_URL.'/inscription';?>">Inscription</a></li>
+					<?php } ?>
+				<li> <a href="<?php echo $lien;?>"><?php echo $co ?></a></li>
 				</ul>
 				<h3 class="muted">Frencheese
 			</h3>
@@ -38,6 +39,29 @@
 		</br>
 		À bientôt !
 		</p>
+		<?php if (isset($_SESSION['droit'])) { ?>
+		<p>
+			Recherche sur un album par artiste
+			<form method="post" action="<?php echo BASE_URL.'/artiste'/afficher ;?>">
+				<table>
+					<tr>
+						<td>
+							<select>
+								<?php foreach($this->listeArtiste as $nomA) {?>
+								<option><?php echo $nomA->nomArt ?></option>	
+								<?php } ?>
+							</select>
+						</td>
+						<td><input type="submit" class="btn btn-info"/><i class="icon icon-search"></i></td>
+					</tr>
+				</table>
+			</form>
+		</p>
+		
+			
+		</form>
+
+		<?php }?>
 			<hr>
 			<p>
 				<?php if(isset($_SESSION['droit']) && $_SESSION['droit'] == "administrateur") { ?>
