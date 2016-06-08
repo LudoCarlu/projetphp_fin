@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php /*session_start();*/ ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -21,7 +21,15 @@
 			</h3>
 		</div>
       <p>
-        Merci de votre inscription. Un administrateur va la prendre en charge
+				<?php if(isset($_SESSION['message'])) {
+					echo $_SESSION['message'];
+					header('Refresh: 1; /public/inscription');
+					echo "<br>Vous allez etre rediriger vers la page d'inscription ";
+				} else {
+					echo "Merci de votre inscription. Un administrateur va la prendre en charge";
+					header('Refresh: 4; /public');
+				}
+				?>
       </p>
 			<hr>
 			<div class="text-center">
