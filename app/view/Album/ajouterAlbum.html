@@ -1,0 +1,46 @@
+<?php session_start(); ?>
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8"/>
+   <title>Frencheese - Ajouter un album</title>
+   <link href='<?php echo BASE_URL."/css/bootstrap.css";?>' rel="stylesheet" />
+</head>
+<body>
+ <div class="container">
+  <div class="page-header">
+   <h1>Ajouter un nouvel album</h1>
+  </div>
+ <form action="<?php echo BASE_URL. '/artiste/envoyerAlbum';?>" method="post">
+  <table>
+   <tr>
+    <td><label for="nomAl">Titre de l'album</label></td><td><input type="text" placeholder="titre" name="nomAl" required><br></td> 
+   </tr>
+   <tr><td><label>Nom de l'artiste </label></td><td>
+   <select name="" required>
+      <option></option>
+      <?php foreach($this->list as $artiste) : ?>
+      <option><?php echo $artiste->nomArt;?></option>
+      <?php endforeach;?>
+   </select></td>
+   <td><a href='<?php echo BASE_URL."/artiste/ajouterArtiste"?>'><I>L'artiste n'est pas dans la liste?</I></a></td>   
+   </tr> 
+   <tr>
+    <td><label for="dateAl">Date de sortie</label></td><td><input type="date" placeholder="aaaa-mm-jj" name="dateAl"><br></td>
+   </tr>
+   <tr>
+    <td><label for="genre">Genre</label></td><td><input type="text" placeholder="genre" name="genre"></textarea></td>
+   </tr>
+   <tr>
+    <td><input type="submit" value="Ajouter"></td>
+   </tr>
+  </table>
+ </form> 
+    
+   <footer>
+    <hr>
+    <p class="text-center"><a href='<?php echo BASE_URL?>'>retour à la page d'acceuil</a></p>
+   </footer>
+   </div>
+</body>
+</html>
