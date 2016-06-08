@@ -2,7 +2,7 @@
 <html>
 	<head>
 		 <meta charset="utf-8"/>
-		 <title>$this->album->nomAl</title>
+		 <title>$this->album->nomAl - Frencheese</title>
 		 <link href='<?php echo BASE_URL."/css/bootstrap.css";?>' rel="stylesheet" />
 	</head>
 	<body>
@@ -20,13 +20,17 @@
 					
 				</tbody>
 			</table></br>
-			<table class="table table-stripped">
-				<tbody>
-					<th>
-						<td><h3>Commentaire</h3></td>
-					</th>
-				</tbody>		
-			</table>
+			
+			
+				<form method="post">
+					<fieldset>
+						<legend><h4>Commentaires</h4></legend>
+						<textarea rows="1" cols="100" placeholder="Ajouter un commentaire.." name="comment"></textarea></td></br>
+						<input type="submit" value="Envoyer" />
+					</fieldset>
+					
+				</form>
+					
 		 <footer>
 			 <hr>
 			 <p class="text-center"><a href='<?php echo BASE_URL?>'>retour à la page d'acceuil</a></p>
