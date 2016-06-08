@@ -116,6 +116,16 @@ class Router {
 				  $result["params"]["id"]= $parts[2];
 				  $result["params"]["post"]= $_POST;
 			  }
+			 if ((count($parts) == 2) && ($parts[1] == "ajouterAlbum")) {
+			 $result["controller"] = "Album";
+			 $result["action"] = "ajouterAlbum";
+			}
+			if ((count($parts) == 2) && ($parts[1] == "envoyerAlbum")) {
+			 $result["controller"] = "Album";
+			 $result["action"] = "envoyerAlbum";
+			 $result["params"]["post"]= $_POST;
+			 $result["redirection"] = "ajouterAlbum";
+			}
 			}
 			  //
 			if($parts[0] == "inscription")  {
