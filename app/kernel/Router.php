@@ -110,12 +110,6 @@ class Router {
 					  $result["params"]["id"] = $parts[2];        
 				}
 			  //
-			  if ((count($parts) == 3) && ($parts[1] == "modifier")){
-				  $result["controller"] = "Album";
-				  $result["action"] = "modifierAlbum";
-				  $result["params"]["id"]= $parts[2];
-				  $result["params"]["post"]= $_POST;
-			  }
 			 if ((count($parts) == 2) && ($parts[1] == "ajouterAlbum")) {
 			 $result["controller"] = "Album";
 			 $result["action"] = "ajouterAlbum";

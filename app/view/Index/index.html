@@ -15,7 +15,6 @@
 					<li> <a href="<?php echo BASE_URL.'/contact';?>">Contacts</a></li>
 					<?php
 					if (isset($_SESSION['droit'])) {
-						echo $_SESSION['droit'];
 						$co = "Deconnexion";
 						$lien = BASE_URL.'/deconnexion';
 					} else {

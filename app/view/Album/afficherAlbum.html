@@ -2,30 +2,24 @@
 <html>
 	<head>
 		 <meta charset="utf-8"/>
-		 <title>$this->album->nomAl</title>
+		 <title>Albums</title>
 		 <link href='<?php echo BASE_URL."/css/bootstrap.css";?>' rel="stylesheet" />
 	</head>
 	<body>
 		<div class="container">
 			<div class="page-header">
+				<h2><?php echo $this->album->nomAl;?></h2>
 			</div>
 			<table class="table table-stripped">
-				<tbody>
-					<tr>
-						<td>Titre de l'album</td><td><?php echo $this->album->nomAl;?></td>
-					</tr>
-					<tr>
-						<td>Nom de l'artiste</td><td><?php echo $this->album->idArt;?></td>
-					</tr>
-					
-				</tbody>
-			</table></br>
+				<tr><td>Titre de l'album</td><td><?php echo $this->album->nomAl;?></td></tr>
+				<tr><td>Nom de l'artiste</td><td><?php echo $this->album->idArt." ".$this->album->nomArt ;?></td></tr>
+				<tr><td>Genre </td><td><?php echo $this->album->genre;?></td></tr>
+				<tr><td>Date de sortie</td><td><?php echo $this->album->dateAl;?></td></tr>
+				<tr><td>Note</td><td><?php echo $this->album->note?></td></tr>
+			</table>
+			<br><br>
 			<table class="table table-stripped">
-				<tbody>
-					<th>
-						<td><h3>Commentaire</h3></td>
-					</th>
-				</tbody>		
+				<tr><th>Commentaires</th></tr>
 			</table>
 		 <footer>
 			 <hr>

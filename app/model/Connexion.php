@@ -19,14 +19,12 @@ class Connexion extends Model {
     
     if ($resultat['mdpU'] == $mdp ) {
 			session_start();
-      echo "Utilisateur";
       $_SESSION['pseudo'] = $resultat['pseudo'];
       $_SESSION['id'] = $resultat['idU'];
       $_SESSION['droit'] = 'utilisateur';
       $message = '<p>Bienvenue '.$_SESSION['pseudo'].', vous etes maintenant connecte !</p>';
     }
     if ($resultat2['mdpAdmin'] == $mdp) {
-      echo "Admin";
 			session_start();
       $_SESSION['pseudo'] = $resultat2['pseudo'];
       $_SESSION['id'] = $resultat2['idA'];
