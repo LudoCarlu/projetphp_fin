@@ -5,13 +5,14 @@
 		<meta charset="utf-8"/>
 	<link href="<?php echo BASE_URL.'/css/bootstrap.css';?>" rel="stylesheet" />
 
-		<title>Album</title>
+		<title>Album - Freencheese</title>
 	</head>
 	<body>
 		<div class="container">
 			<div class="page-header">
 				<h1>Listes des albums</h1>
 			</div>
+			<?php if(isset($_SESSION['droit'])) { ?>
 			<table class="table table-stripped">
 				<thead>
 					<tr>
@@ -31,6 +32,12 @@
 				</tbody>
 			</table>
 				<a href='<?php echo BASE_URL."/album/ajouterAlbum"?>' class="ajoutNew">Ajouter un nouvel album</a>
+			<?php } 
+			else {
+				echo "<p> Pour voir les artistes il vous faut être inscrit et connecté. </p>"; ?>
+					<p> <a href="<?php echo $lien;?>">-> Pour vous connecter</a></p>
+					<p> <a href="<?php echo BASE_URL.'/inscription';?>"> -> Par encore inscrit c'est par ici</a></p>
+			<?php } //Fin else ?>
 			<footer>
 				<div class="text-center">
 					<a href="<?php echo BASE_URL;?>">page d'accueil</a>
