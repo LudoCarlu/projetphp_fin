@@ -1,5 +1,4 @@
 <?php
-
 class Connexion extends Model {
 	public $pseudo, $mdp ;
   
@@ -25,9 +24,7 @@ class Connexion extends Model {
       $message = '<p>Bienvenue '.$_SESSION['pseudo'].', vous etes maintenant connecte !</p>';
     }
     if ($resultat2['mdpAdmin'] == $mdp) {
-			if(!isset($_SESSION['pseudo'])) { //Protection car l'admin a un compte utilisateur et admin eviter de relancer la session
-				session_start();
-			}
+			session_start();
       $_SESSION['pseudo'] = $resultat2['pseudo'];
       $_SESSION['id'] = $resultat2['idA'];
       $_SESSION['droit'] = 'administrateur';
@@ -40,7 +37,5 @@ class Connexion extends Model {
     $_SESSION['message'] = $message;
     
 	}
-
 }
-
 ?>
