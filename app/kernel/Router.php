@@ -156,14 +156,18 @@ class Router {
 			  if (count($parts) == 1){
 				  $result["controller"] = "Administrateur";
 				  $result['action'] = "afficherInscription";
-					
-					
 			  }
+				
 				if ((count($parts) == 3 ) && ($parts[0] == "administrateur") && ($parts[1] == "ajouterUtilisateur")) {
 					$result["controller"] = "Administrateur";
 					$result["action"] = "ajouterUtilisateur";
 					$result["params"]["pseudo"] = $parts[2];
-					$result["redirection"] = "afficherInscription";
+				}
+				
+				if ((count($parts) == 3 ) && ($parts[0] == "administrateur") && ($parts[1] == "refuserUtilisateur")) {
+					$result["controller"] = "Administrateur";
+					$result["action"] = "refuserUtilisateur";
+					$result["params"]["pseudo"] = $parts[2];
 				}
 			  //
 		  }

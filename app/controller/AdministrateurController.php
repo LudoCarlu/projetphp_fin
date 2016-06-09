@@ -6,15 +6,17 @@ class AdministrateurController extends Controller {
     $this->view->list = Administrateur::getInscription();
 		$this->view->display(); 
   }
+	
 	public function ajouterUtilisateur() {
 		$pseudo= $this->route["params"]["pseudo"];
 		Administrateur::ajouterDemande($pseudo);
-		//$this->view->list = Administrateur::getInscription();
-		//$this->load->helper('url');
 		header('Refresh: 0 ;/public/administrateur');
-		//$this->view->redirection();
-		
 	}
-
+	
+	public function refuserUtilisateur() {
+		$pseudo= $this->route["params"]["pseudo"];
+		Administrateur::refuserDemande($pseudo);
+		header('Refresh: 0 ;/public/administrateur');
+	}
   
 }

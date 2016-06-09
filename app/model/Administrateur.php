@@ -3,11 +3,6 @@
 class Administrateur extends Model {
 	public $idA, $pseudo, $email, $mdpAdmin;
 
-	public function toHTML()
-	{
-		return ($this->pseudo)." ".($this->email);
-	}
-  
 	public static function getInscription() {
 		$db = Database::getInstance();
 		$sql = "SELECT * FROM inscription";
@@ -42,6 +37,14 @@ class Administrateur extends Model {
 		$stmt->bindValue(':pseudo',$pseudo,PDO::PARAM_STR);
 		$stmt->execute();
 		
+	}
+	
+	public static function refuserDemande($pseudo) {
+		$db = Database::getInstance();
+		$sql = "DELETE FROM inscription WHERE pseudo = :pseudo";
+		$stmt = $db->prepare($sql);
+		$stmt->bindValue(':pseudo',$pseudo,PDO::PARAM_STR);
+		$stmt->execute();
 	}
 }
 ?>
