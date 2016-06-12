@@ -10,7 +10,7 @@ class Commentaire extends Model {
 		return $stmt->fetchAll();
 	}
   
-  public static function getListeFromUtilisateur( $id ) {
+	public static function getListeFromUtilisateur( $id ) {
 		$db = Database::getInstance();
 		$sql = "SELECT * FROM commentaire WHERE idU=".$id;
 		$stmt = $db->query($sql);
