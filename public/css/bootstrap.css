@@ -81,6 +81,31 @@ a:hover,
 a:active {
   outline: 0;
 }
+ul.notes-echelle {
+	margin:0;
+	padding:0;
+	font:.75em/1.2 Arial, Helvetica, sans-serif;
+}
+ul.notes-echelle li {
+	float:left;
+	margin:0;
+	padding:0;
+	list-style:none;
+	min-width:20px;
+	min-height:20px;
+}
+/* Correctif IE6 sur min-width & min-height */
+* html ul.notes-echelle.js li {
+	width:20px;
+	height:20px;
+}
+ul.notes-echelle li label {
+	display:block;
+	text-align:center;
+	line-height:20px;
+	background:url(etoiles.gif) center top no-repeat;
+	cursor:pointer;
+}
 
 sub,
 sup {
@@ -127,14 +152,14 @@ img {
 	-moz-border-radius:6px;
 	-webkit-border-radius:6px;
 	border-radius:6px;
-	border:1px solid #a3140a;
+	border:1px solid #d02718;
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
 	font-family:Arial;
-	font-size:14px;
+	font-size:15px;
 	font-weight:bold;
-	padding:7px 5px;
+	padding:4px 8px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #810e05;
 }
@@ -152,6 +177,7 @@ img {
 	position:relative;
 	top:1px;
 }
+
 
 
 button,
