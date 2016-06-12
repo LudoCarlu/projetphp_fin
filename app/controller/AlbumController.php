@@ -33,6 +33,16 @@ class AlbumController extends Controller {
   	}
   	header('location: ajouterAlbum');
  	}
+	
+	public function afficherAlFromArtiste() {
+		$data = $this->route["params"]["post"];
+		$nomArt = $data['artiste'];
+		//echo $nomArt;
+		if (isset($nomArt)) {
+			$this->view->list = Album::getListFromArtiste($nomArt);
+			$this->view->display(); 
+		}
+	}
 }
 	
 

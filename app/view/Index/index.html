@@ -1,19 +1,21 @@
 <?php session_start(); ?>
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8"/>
-		<link href="<?php echo BASE_URL.'/css/bootstrap.css';?>" rel="stylesheet" />
-		<title>Home - Frencheese</title>
-	</head>
-	<body>
-		<div class="container">
-			<div class="page-header">
-				<ul class="nav nav-pills pull-right">
-					<li> <a href="<?php echo BASE_URL.'/artiste';?>">Artistes</a></li>
-					<li> <a href="<?php echo BASE_URL.'/album';?>">Albums</a></li>
-					<li> <a href="<?php echo BASE_URL.'/contact';?>">Contacts</a></li>
-					<?php
+
+<head>
+	<meta charset="utf-8" />
+	<link href="<?php echo BASE_URL.'/css/bootstrap.css';?>" rel="stylesheet" />
+	<title>Home - Frencheese</title>
+</head>
+
+<body>
+	<div class="container">
+		<div class="page-header">
+			<ul class="nav nav-pills pull-right">
+				<li> <a href="<?php echo BASE_URL.'/artiste';?>">Artistes</a></li>
+				<li> <a href="<?php echo BASE_URL.'/album';?>">Albums</a></li>
+				<li> <a href="<?php echo BASE_URL.'/contact';?>">Contacts</a></li>
+				<?php
 					if (isset($_SESSION['droit'])) {
 						$co = "Deconnexion";
 						$lien = BASE_URL.'/deconnexion';
@@ -22,56 +24,72 @@
 						$lien = BASE_URL.'/connexion';
 					}
 					if(!isset($_SESSION['droit'])) { ?>
-						<li> <a href="<?php echo BASE_URL.'/inscription';?>">Inscription</a></li>
+					<li> <a href="<?php echo BASE_URL.'/inscription';?>">Inscription</a></li>
 					<?php } ?>
-				<li> <a href="<?php echo $lien;?>"><?php echo $co ?></a></li>
-				</ul>
-				<h3 class="muted">Frencheese
+					<li>
+						<a href="<?php echo $lien;?>">
+							<?php echo $co ?>
+						</a>
+					</li>
+			</ul>
+			<h3 class="muted">Frencheese
 			</h3>
 		</div>
 		<p class="lead">Bienvenue sur Frencheese, le site n°1 de référencement musical.</br>
-		Le site est actuellement en phase de construction, mais il sera bientôt possible de :</br>
-		<ul>
-  		<li>Posséder son propre compte utilisateur.</li>
-  		<li>Donner votre avis sur un album ou un artiste en commentaire, ou en notant.</li>
- 			<li>Ajouter vos artistes et albums préférés dans notre base de données.</li>
-		</ul>
-		</br>
-		À bientôt !
+			Le site est actuellement en phase de construction, mais il sera bientôt possible de :</br>
+			<ul>
+				<li>Posséder son propre compte utilisateur.</li>
+				<li>Donner votre avis sur un album ou un artiste en commentaire, ou en notant.</li>
+				<li>Ajouter vos artistes et albums préférés dans notre base de données.</li>
+			</ul>
+			</br>
+			À bientôt !
 		</p>
 		<?php if (isset($_SESSION['droit'])) { ?>
 		<p>
 			Recherche sur un album par artiste
-			<form method="post" action="<?php echo BASE_URL.'/artiste'/afficher ;?>">
+			<form method="post" action='<?php echo BASE_URL."/album/artiste/";?>'>
 				<table>
 					<tr>
 						<td>
-							<select>
-								<?php foreach($this->listeArtiste as $nomA) {?>
-								<option><?php echo $nomA->nomArt ?></option>	
+							<select name="artiste">
+								<?php foreach($this->listeArtiste as $artiste) {?>
+								<option value="<?php echo $artiste->nomArt;?>"><?php echo $artiste->nomArt ;?></option>	
 								<?php } ?>
 							</select>
 						</td>
-						<td><input type="submit" class="btn btn-info"/><i class="icon icon-search"></i></td>
 					</tr>
+					<tr><td><input type="submit" value="Rechercher" class="btn btn-info" /></td></tr>
 				</table>
 			</form>
 		</p>
-		
-			
-		</form>
-
-		<?php }?>
-			<hr>
-			<p>
-				<?php if(isset($_SESSION['droit']) && $_SESSION['droit'] == "administrateur") { ?>
-					<a href="<?php echo BASE_URL.'/administrateur';?>">Listes des demandes d'inscription</a>
-				<?php } ?>
-			</p>
-			<div class="text-center">
-				<a href="<?php echo BASE_URL;?>">page d'accueil</a>
-			</div>
+		<p>
+			Recherche sur un album par genre
+			<form method="post" action="#">
+				<table>
+					<tr><td>
+						<select>
+							<?php foreach($this->listeGenre as $genre) {?>
+							<option><?php echo $genre->genre; ?></option>
+							<?php } ?>
+						</select>
+					</td></tr>
+					<tr><td><input type="submit" value="Rechercher" class="btn btn-info"/></td></tr>
+				</table>
+			</form>
+		</p>
+		<?php } ?>
+		<hr>
+		<p>
+			<?php if(isset($_SESSION['droit']) && $_SESSION['droit'] == "administrateur") { ?>
+			<a href="<?php echo BASE_URL.'/administrateur';?>">Listes des demandes d'inscription</a>
+			<?php } ?>
+		</p>
+		<div class="text-center">
+			<a href="<?php echo BASE_URL;?>">page d'accueil</a>
+		</div>
 		</footer>
 	</div>
 </body>
+
 </html>
