@@ -16,6 +16,7 @@ class AlbumController extends Controller {
 			$idU = $_SESSION['id'];
 			Commentaire::ajouterCommentaire($idAl,$idU,$comment);
 		}
+		
 		$this->view->album = Album::getFromId($idAl);
 		$this->view->com = Commentaire::getListeFromAlbum($idAl);
 		$this->view->display();
