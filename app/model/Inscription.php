@@ -32,7 +32,6 @@ class Inscription extends Model {
 		$resultat4 = $stmt4->fetch();
 		
 		if (!$resultat && !$resultat2 && !$resultat3 && !$resultat4) {
-			echo "Im here";
 			$insert = "INSERT INTO inscription VALUES (:prenom,:nom,:pseudo,:email,:mdp1)";
 			$stmtinsert = $db->prepare($insert);
     	$stmtinsert->setFetchMode(PDO::FETCH_CLASS, "Inscription");

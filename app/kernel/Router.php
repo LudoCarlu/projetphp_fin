@@ -114,6 +114,11 @@ class Router {
 				  $result["action"] = "afficherAlFromArtiste";
 				  $result["params"]["post"]= $_POST;
 			  }
+				if ((count($parts) == 3) && ($parts[1] == "genre") && ($parts[0] == "album")){
+				  $result["controller"] = "Album";
+				  $result["action"] = "afficherAlFromGenre";
+				  $result["params"]["post"]= $_POST;
+			  }
 				
 			  //
 			 if ((count($parts) == 2) && ($parts[1] == "ajouterAlbum")) {

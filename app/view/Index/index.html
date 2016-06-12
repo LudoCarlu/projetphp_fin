@@ -65,12 +65,12 @@
 		</p>
 		<p>
 			Recherche sur un album par genre
-			<form method="post" action="#">
+			<form method="post" action='<?php echo BASE_URL."/album/genre/";?>'>
 				<table>
 					<tr><td>
-						<select>
+						<select name="genre">
 							<?php foreach($this->listeGenre as $genre) {?>
-							<option><?php echo $genre->genre; ?></option>
+							<option value="<?php echo $genre->genre;?>"><?php echo $genre->genre; ?></option>
 							<?php } ?>
 						</select>
 					</td></tr>

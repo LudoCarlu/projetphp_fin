@@ -43,6 +43,16 @@ class AlbumController extends Controller {
 			$this->view->display(); 
 		}
 	}
+	
+	public function afficherAlFromGenre() {
+		$data = $this->route["params"]["post"];
+		$genre = $data['genre'];
+		//echo $nomArt;
+		if (isset($genre)) {
+			$this->view->list = Album::getListFromGenre($genre);
+			$this->view->display(); 
+		}
+	}
 }
 	
 

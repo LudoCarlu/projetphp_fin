@@ -49,6 +49,14 @@ class Album {
 		$stmt->setFetchMode(PDO::FETCH_CLASS, "Album");
 		return $stmt->fetchAll();
 	}
+	
+	public static function getListFromGenre($genre) {
+		$db = Database::getInstance();
+		$sql = "SELECT * FROM album Al JOIN artiste Art ON (Al.idArt = Art.idArt) WHERE Al.genre ='$genre'";
+		$stmt = $db->query($sql);
+		$stmt->setFetchMode(PDO::FETCH_CLASS, "Album");
+		return $stmt->fetchAll();
+	}
 
 }
 

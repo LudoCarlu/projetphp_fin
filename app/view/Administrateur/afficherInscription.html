@@ -15,21 +15,19 @@
 			<table class="table table-stripped">
 				<thead>
 					<tr>
-						<th></th><th>Nom</th><th>Prenom</th><th>Pseudo</th><th>Email</th>
+						<th></th><th></th><th>Nom</th><th>Prenom</th><th>Pseudo</th><th>Email</th>
 					</tr>
 				</thead>
 				<tbody>
 					<?php foreach($this->list as $inscription) : ?>
 					<tr>
-						<td><a href='<?php echo BASE_URL."/administrateur/ajouterUtilisateur/".$inscription->pseudo;?>'class="btn btn-info"><i class="icon icon-plus"><i></a>
-            <a href='<?php echo BASE_URL."/administrateur/refuserUtilisateur/".$inscription->pseudo;?>'class="btn btn-info"><i class="icon icon-remove"><i></a></td>
-
+						<td><a href='<?php echo BASE_URL."/administrateur/ajouterUtilisateur/".$inscription->pseudo;?>'class="btn btn-info"><i class="icon icon-plus"></i></a></td>
+            <td><a href='<?php echo BASE_URL."/administrateur/refuserUtilisateur/".$inscription->pseudo;?>'class="btn btn-info"><i class="icon icon-remove"><i></a></td>
 						<td><?php echo $inscription->nom;?></td>
 						<td><?php echo $inscription->prenom;?></td>
 						<td><?php echo $inscription->pseudo;?></td>
-						<td><?php echo $inscription->email;?></td>
-						
-											</tr>
+						<td><?php echo $inscription->email;?></td>	
+					</tr>
 					<?php endforeach;?>
 				</tbody>
 			</table>
