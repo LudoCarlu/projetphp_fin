@@ -5,7 +5,7 @@
 		<meta charset="utf-8"/>
 	<link href="<?php echo BASE_URL.'/css/bootstrap.css';?>" rel="stylesheet" />
 
-		<title>Utilisateur</title>
+		<title>Frencheese - Utilisateur</title>
 	</head>
 	<body>
 		<div class="container">
@@ -17,7 +17,6 @@
 					<li> <a href="<?php echo BASE_URL.'/contact';?>">Contacts</a></li>
 					<?php
 					if (isset($_SESSION['droit'])) {
-						echo $_SESSION['droit'];
 						$co = "Deconnexion";
 						$lien = BASE_URL.'/deconnexion';
 					} else {
@@ -30,7 +29,7 @@
 				</ul>
 				<h1>Listes des utilisateurs</h1>
 			</div>
-			<?php if(isset($_SESSION['droit']) && $_SESSION['droit'] == "administrateur") { ?>
+			<?php if(isset($_SESSION['droit'])) { ?>
 			<table class="table table-stripped">
 				<thead>
 					<tr>

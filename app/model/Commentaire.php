@@ -20,11 +20,12 @@ class Commentaire extends Model {
   
 	public static function getListeFromUtilisateur( $id ) {
 		$db = Database::getInstance();
-		$sql = "SELECT * FROM commentaire WHERE idU=".$id." ORDER BY date DESC";
+		$sql = "SELECT * FROM commentaire C JOIN album A ON (C.idAl = A.idAl) WHERE C.idU=".$id." ORDER BY date DESC";
 		$stmt = $db->query($sql);
 		$stmt->setFetchMode(PDO::FETCH_CLASS, "Commentaire");
 		return $stmt->fetchAll();
 	}
+	
   public static function ajouterCommentaire($idAl,$idU,$comment) {
     $db = Database::getInstance();
     $sql = "INSERT INTO commentaire (idAl,idU,commentaire,date) VALUES (:idAl,:idU,:commentaire,:date)";

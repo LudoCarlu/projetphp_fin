@@ -12,7 +12,7 @@ class Note extends Model {
   
 	public static function getListeFromUtilisateur( $id ) {
 		$db = Database::getInstance();
-		$sql = "SELECT * FROM note WHERE idU=".$id;
+		$sql = "SELECT * FROM note N JOIN album A ON (N.idAl = A.idAl) WHERE N.idU=".$id;
 		$stmt = $db->query($sql);
 		$stmt->setFetchMode(PDO::FETCH_CLASS, "Note");
 		return $stmt->fetchAll();
