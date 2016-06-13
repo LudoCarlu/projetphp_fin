@@ -11,20 +11,16 @@ class AlbumController extends Controller {
 		//On recup la session
 		session_start();
 		$idAl = $this->route["params"]["id"];
-		echo $_POST['note'];
 		if(isset($_POST['commentaire'])) {
 			$comment = $_POST['commentaire'];
 			$idU = $_SESSION['id'];
 			Commentaire::ajouterCommentaire($idAl,$idU,$comment);
 		}
-<<<<<<< HEAD
 		if(isset($_POST['note'])){
 			$note = $_POST['note'];
 			$idU = $_SESSION['id'];
 			Note::ajouterNote($idAl,$idU,$note);
 		}
-=======
->>>>>>> d9122dfc07364a2a26498198d29977d9ec7be0de
 		
 		$this->view->album = Album::getFromId($idAl);
 		$this->view->com = Commentaire::getListeFromAlbum($idAl);

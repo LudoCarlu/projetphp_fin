@@ -1,10 +1,18 @@
 <?php
 class Commentaire extends Model {
   public $idC,$idAl,$idU,$comment;
+	
+	public static function getList() {
+		$db = Database::getInstance();
+		$sql = "SELECT * FROM commentaire ORDER BY date DESC";
+		$stmt = $db->query($sql);
+		$stmt->setFetchMode(PDO::FETCH_CLASS, "Commentaire");
+		return $stmt->fetchAll();
+	}
   
 	public static function getListeFromAlbum( $idAl ) {
 		$db = Database::getInstance();
-		$sql = "SELECT * FROM commentaire WHERE idAl=".$idAl;
+		$sql = "SELECT * FROM commentaire WHERE idAl=".$idAl." ORDER BY date DESC";
 		$stmt = $db->query($sql);
 		$stmt->setFetchMode(PDO::FETCH_CLASS, "Commentaire");
 		return $stmt->fetchAll();
@@ -12,7 +20,7 @@ class Commentaire extends Model {
   
 	public static function getListeFromUtilisateur( $id ) {
 		$db = Database::getInstance();
-		$sql = "SELECT * FROM commentaire WHERE idU=".$id;
+		$sql = "SELECT * FROM commentaire WHERE idU=".$id." ORDER BY date DESC";
 		$stmt = $db->query($sql);
 		$stmt->setFetchMode(PDO::FETCH_CLASS, "Commentaire");
 		return $stmt->fetchAll();

@@ -10,13 +10,23 @@ class AdministrateurController extends Controller {
 	public function ajouterUtilisateur() {
 		$pseudo= $this->route["params"]["pseudo"];
 		Administrateur::ajouterDemande($pseudo);
-		header('Refresh: 0 ;/public/administrateur');
+		header('Refresh: 0 ;/public/administrateur/inscription');
 	}
 	
 	public function refuserUtilisateur() {
 		$pseudo= $this->route["params"]["pseudo"];
 		Administrateur::refuserDemande($pseudo);
-		header('Refresh: 0 ;/public/administrateur');
+		header('Refresh: 0 ;/public/administrateur/inscription');
 	}
   
+	public function afficherCommentaire() {
+		$this->view->list = Commentaire::getList();
+		$this->view->display();
+	}
+	
+	public function supprimerCommentaire() {
+		$idC= $this->route["params"]["idC"];
+		Administrateur::supprimerCommentaire($idC);
+		header('Refresh: 0 ;/public/administrateur/commentaire');
+	}
 }

@@ -82,7 +82,8 @@
 		<hr>
 		<p>
 			<?php if(isset($_SESSION['droit']) && $_SESSION['droit'] == "administrateur") { ?>
-			<a href="<?php echo BASE_URL.'/administrateur';?>">Listes des demandes d'inscription</a>
+			<a href="<?php echo BASE_URL.'/administrateur/inscription';?>">Liste des demandes d'inscription</a><br>
+			<a href="<?php echo BASE_URL.'/administrateur/commentaire';?>">Liste des commentaires </a>
 			<?php } ?>
 		</p>
 		<div class="text-center">

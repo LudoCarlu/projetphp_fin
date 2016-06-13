@@ -164,9 +164,14 @@ class Router {
 			}
 			
 			if($parts[0] == "administrateur")  {
-			  if (count($parts) == 1){
+			  if (count($parts) == 2 && $parts[1] == "inscription"){
 				  $result["controller"] = "Administrateur";
 				  $result['action'] = "afficherInscription";
+			  }
+				
+				if (count($parts) == 2 && $parts[1] == "commentaire"){
+				  $result["controller"] = "Administrateur";
+				  $result['action'] = "afficherCommentaire";
 			  }
 				
 				if ((count($parts) == 3 ) && ($parts[0] == "administrateur") && ($parts[1] == "ajouterUtilisateur")) {
@@ -179,6 +184,12 @@ class Router {
 					$result["controller"] = "Administrateur";
 					$result["action"] = "refuserUtilisateur";
 					$result["params"]["pseudo"] = $parts[2];
+				}
+				
+				if ((count($parts) == 3 ) && ($parts[0] == "administrateur") && ($parts[1] == "supprimerCommentaire")) {
+					$result["controller"] = "Administrateur";
+					$result["action"] = "supprimerCommentaire";
+					$result["params"]["idC"] = $parts[2];
 				}
 			  //
 		  }
