@@ -101,6 +101,11 @@ class Router {
 					  $result["action"] = "afficherAlbum";
 					  $result["params"]["id"] = $parts[2];        
 				}
+				if ((count($parts) == 3) && ($parts[1] == "date") && ($parts[0] == "album")){
+				  $result["controller"] = "Album";
+				  $result["action"] = "afficherAlFromDate";
+				  $result["params"]["post"]= $_POST;
+			  }
 				if ((count($parts) == 3) && ($parts[1] == "artiste") && ($parts[0] == "album")){
 				  $result["controller"] = "Album";
 				  $result["action"] = "afficherAlFromArtiste";
@@ -109,6 +114,11 @@ class Router {
 				if ((count($parts) == 3) && ($parts[1] == "genre") && ($parts[0] == "album")){
 				  $result["controller"] = "Album";
 				  $result["action"] = "afficherAlFromGenre";
+				  $result["params"]["post"]= $_POST;
+			  }
+				if ((count($parts) == 3) && ($parts[1] == "note") && ($parts[0] == "album")){
+				  $result["controller"] = "Album";
+				  $result["action"] = "afficherAlFromNote";
 				  $result["params"]["post"]= $_POST;
 			  }
 				if ((count($parts) == 4 ) && ($parts[1] == "supprimerCommentaire")) {

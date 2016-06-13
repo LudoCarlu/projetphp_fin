@@ -42,7 +42,6 @@ class AlbumController extends Controller {
 	public function afficherAlFromArtiste() {
 		$data = $this->route["params"]["post"];
 		$nomArt = $data['artiste'];
-		//echo $nomArt;
 		if (isset($nomArt)) {
 			$this->view->list = Album::getListFromArtiste($nomArt);
 			$this->view->display(); 
@@ -52,9 +51,26 @@ class AlbumController extends Controller {
 	public function afficherAlFromGenre() {
 		$data = $this->route["params"]["post"];
 		$genre = $data['genre'];
-		//echo $nomArt;
 		if (isset($genre)) {
 			$this->view->list = Album::getListFromGenre($genre);
+			$this->view->display(); 
+		}
+	}
+	
+	public function afficherAlFromDate() {
+		$data = $this->route["params"]["post"];
+		$dateAl = $data['dateAl'];
+		if (isset($dateAl)) {
+			$this->view->list = Album::getListFromDate($dateAl);
+			$this->view->display(); 
+		}
+	}
+	
+	public function afficherAlFromNote() {
+		$data = $this->route["params"]["post"];
+		$note = $data['note'];
+		if (isset($note)) {
+			$this->view->list = Album::getListFromNote($note);
 			$this->view->display(); 
 		}
 	}

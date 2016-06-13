@@ -62,38 +62,88 @@
 			</table>
 		</p>
 		<br>
-		<p>
-			Recherche sur un album par artiste
-			<form method="post" action='<?php echo BASE_URL."/album/artiste/";?>'>
-				<table>
-					<tr>
-						<td>
-							<select name="artiste">
-								<?php foreach($this->listeArtiste as $artiste) {?>
-								<option value="<?php echo $artiste->nomArt;?>"><?php echo $artiste->nomArt ;?></option>	
-								<?php } ?>
-							</select>
-						</td>
-					</tr>
-					<tr><td><input type="submit" value="Rechercher" class="btn btn-info" /></td></tr>
-				</table>
-			</form>
-		</p>
-		<p>
-			Recherche sur un album par genre
-			<form method="post" action='<?php echo BASE_URL."/album/genre/";?>'>
-				<table>
-					<tr><td>
-						<select name="genre">
-							<?php foreach($this->listeGenre as $genre) {?>
-							<option value="<?php echo $genre->genre;?>"><?php echo $genre->genre; ?></option>
-							<?php } ?>
-						</select>
-					</td></tr>
-					<tr><td><input type="submit" value="Rechercher" class="btn btn-info"/></td></tr>
-				</table>
-			</form>
-		</p>
+		
+			<table class = "table table-bordered">
+				<tr>
+					<td>
+						<p>
+						<h4>Recherche sur un album par artiste</h4>
+							<form method="post" action='<?php echo BASE_URL."/album/artiste/";?>'>
+								<table>
+									<tr>
+										<td>
+											<select name="artiste">
+												<?php foreach($this->listeArtiste as $artiste) {?>
+												<option value="<?php echo $artiste->nomArt;?>"><?php echo $artiste->nomArt ;?></option>	
+												<?php } ?>
+											</select>
+										</td>
+									</tr>
+									<tr><td><input type="submit" value="Rechercher" class="btn btn-info" /></td></tr>
+								</table>
+							</form>
+						</p>	
+					</td>
+					<td>
+						<p>
+							<h4>Recherche un album par son genre</h4>
+							<form method="post" action='<?php echo BASE_URL."/album/genre/";?>'>
+								<table>
+									<tr><td>
+										<select name="genre">
+											<?php foreach($this->listeGenre as $genre) {?>
+											<option value="<?php echo $genre->genre;?>"><?php echo $genre->genre; ?></option>
+											<?php } ?>
+										</select>
+									</td></tr>
+									<tr><td><input type="submit" value="Rechercher" class="btn btn-info"/></td></tr>
+								</table>
+							</form>
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p>
+							<h4>Rechercher un album par sa date</h4>
+							<form method="post" action='<?php echo BASE_URL."/album/date/";?>'>
+								<table>
+									<tr>
+										<td><input type="date" placeholder="aaaa-mm-jj" name="dateAl" value="2008-09-29"></td>
+									</tr>
+									<tr>
+										<td><input type="submit" value="Rechercher" class="btn btn-info"/></td>
+									</tr>
+								</table>
+							</form>
+						</p>
+					</td>
+				
+				<td>
+					<p>
+							<h4>Rechercher un album par sa note</h4>
+							<form method="post" action='<?php echo BASE_URL."/album/note/";?>'>
+								<table>
+									<tr><td>
+										<select name="note">
+												<option value="1">1</option>
+												<option value="2">2</option>
+												<option value="3">3</option>
+												<option value="4">4</option>
+												<option value="5">5</option>
+										</select>
+									</td></tr>
+										<td><input type="submit" value="Rechercher" class="btn btn-info"/></td>
+								</table>
+							</form>
+						</p>
+
+				</td>
+				</tr>
+				
+			</table>	
+			
+			
 		<?php } ?>
 		<hr>
 		<p>
