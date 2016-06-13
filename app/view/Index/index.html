@@ -36,16 +36,31 @@
 			</h3>
 		</div>
 		<p class="lead">Bienvenue sur Frencheese, le site n°1 de référencement musical.</br>
-			Le site est actuellement en phase de construction, mais il sera bientôt possible de :</br>
 			<ul>
 				<li>Posséder son propre compte utilisateur.</li>
 				<li>Donner votre avis sur un album ou un artiste en commentaire, ou en notant.</li>
 				<li>Ajouter vos artistes et albums préférés dans notre base de données.</li>
 			</ul>
-			</br>
-			À bientôt !
 		</p>
+		<br>
 		<?php if (isset($_SESSION['droit'])) { ?>
+		<p>
+			<h4>
+				TOP 5 des meilleurs albums
+			</h4>
+			<table class="table table-bordered">
+				<th>Titre de l'album</th><th>Nom de l'artiste</th><th>Genre</th><th>Note</th>
+				<?php foreach($this->palmares as $palma) : ?>
+				<tr>
+					<td><?php echo $palma->nomAl;?></td>
+					<td><?php echo $palma->nomArt ;?></td>
+					<td><?php echo $palma->genre;?></td>
+					<td><?php echo $palma->note;?></td>
+				</tr>
+				<?php endforeach; ?>
+			</table>
+		</p>
+		<br>
 		<p>
 			Recherche sur un album par artiste
 			<form method="post" action='<?php echo BASE_URL."/album/artiste/";?>'>

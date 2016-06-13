@@ -44,15 +44,23 @@ class Note extends Model {
   }
 	public static function CalculMoyFromId ($idAl) {
 		$db = Database::getInstance();
-		$sql = "SELECT AVG(note) as note FROM note WHERE idAl=".$idAl;
+		//Verification si l'album a une note
+		$sql="SELECT * FROM note WHERE idAl=".$idAl;
 		$stmt = $db->query($sql);
 		$stmt->setFetchMode(PDO::FETCH_CLASS, "Note");
 		$res=$stmt->fetch();
 		
-		$sql = "UPDATE album SET note=$res->note WHERE idAl=$idAl";
-		$stmt = $db->query($sql);
-		$stmt->setFetchMode(PDO::FETCH_CLASS, "Note");
-		
+		//S'il y a une note au moins on calcul la moyenne
+		if ($res) {
+			$sql = "SELECT AVG(note) as note FROM note WHERE idAl=".$idAl;
+			$stmt = $db->query($sql);
+			$stmt->setFetchMode(PDO::FETCH_CLASS, "Note");
+			$res2=$stmt->fetch();
+			//On update la note de l'album
+			$sql = "UPDATE album SET note=$res2->note WHERE idAl=$idAl";
+			$stmt = $db->query($sql);
+			$stmt->setFetchMode(PDO::FETCH_CLASS, "Note");
+		}
 	}
 	
 }

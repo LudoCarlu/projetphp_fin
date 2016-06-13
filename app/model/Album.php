@@ -57,6 +57,14 @@ class Album {
 		$stmt->setFetchMode(PDO::FETCH_CLASS, "Album");
 		return $stmt->fetchAll();
 	}
+	
+	public static function palmares() {
+		$db = Database::getInstance();
+		$sql = "SELECT * FROM album Al JOIN artiste Art ON (Al.idArt = Art.idArt) ORDER BY Al.note DESC LIMIT 5";
+		$stmt = $db->query($sql);
+		$stmt->setFetchMode(PDO::FETCH_CLASS, "Album");
+		return $stmt->fetchAll();
+	}
 
 }
 
