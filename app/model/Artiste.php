@@ -12,7 +12,7 @@ class Artiste extends Model{
 	}
 	public static function getList() {
 		$db = Database::getInstance();
-		$sql = "SELECT * FROM artiste";
+		$sql = "SELECT * FROM artiste ORDER BY nomArt Asc";
 		$stmt = $db->query($sql);
 		$stmt->setFetchMode(PDO::FETCH_CLASS, "Artiste");
 		return $stmt->fetchAll();

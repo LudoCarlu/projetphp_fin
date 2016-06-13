@@ -12,7 +12,7 @@ class Album {
 	
 	public static function getList() {
 	$db = Database::getInstance();
-	$sql = "SELECT Al.idAl,Art.nomArt,Al.nomAl,Al.dateAl,Al.genre FROM artiste Art JOIN album Al ON (Art.idArt=Al.idArt);";
+	$sql = "SELECT Al.idAl,Art.nomArt,Al.nomAl,Al.dateAl,Al.genre FROM artiste Art JOIN album Al ON (Art.idArt=Al.idArt) ORDER BY nomArt Asc;";
 	$stmt = $db->query($sql);
 	$stmt->setFetchMode(PDO::FETCH_CLASS, "Album");
 	return $stmt->fetchAll();
@@ -36,7 +36,7 @@ class Album {
 	
 	public static function getListGenre() {
 		$db = Database::getInstance();
-		$sql = "SELECT DISTINCT genre FROM album";
+		$sql = "SELECT DISTINCT genre FROM album ORDER BY genre Asc";
 		$stmt = $db->query($sql);
 		$stmt->setFetchMode(PDO::FETCH_CLASS, "Album");
 		return $stmt->fetchAll();
@@ -44,7 +44,7 @@ class Album {
 	
 	public static function getListFromArtiste($nomArt) {
 		$db = Database::getInstance();
-		$sql = "SELECT * FROM album Al JOIN artiste Art ON (Al.idArt = Art.idArt) WHERE Art.nomArt ='$nomArt'";
+		$sql = "SELECT * FROM album Al JOIN artiste Art ON (Al.idArt = Art.idArt) WHERE Art.nomArt ='$nomArt' ORDER BY nomArt Asc";
 		$stmt = $db->query($sql);
 		$stmt->setFetchMode(PDO::FETCH_CLASS, "Album");
 		return $stmt->fetchAll();
@@ -52,7 +52,7 @@ class Album {
 	
 	public static function getListFromGenre($genre) {
 		$db = Database::getInstance();
-		$sql = "SELECT * FROM album Al JOIN artiste Art ON (Al.idArt = Art.idArt) WHERE Al.genre ='$genre'";
+		$sql = "SELECT * FROM album Al JOIN artiste Art ON (Al.idArt = Art.idArt) WHERE Al.genre ='$genre' ORDER BY nomArt Asc";
 		$stmt = $db->query($sql);
 		$stmt->setFetchMode(PDO::FETCH_CLASS, "Album");
 		return $stmt->fetchAll();
@@ -60,7 +60,7 @@ class Album {
 	
 	public static function getListFromDate($dateAl) {
 		$db = Database::getInstance();
-		$sql = "SELECT * FROM album Al JOIN artiste Art ON (Al.idArt = Art.idArt) WHERE Al.dateAl ='$dateAl'";
+		$sql = "SELECT * FROM album Al JOIN artiste Art ON (Al.idArt = Art.idArt) WHERE Al.dateAl ='$dateAl' ORDER BY nomArt Asc";
 		$stmt = $db->query($sql);
 		$stmt->setFetchMode(PDO::FETCH_CLASS, "Album");
 		return $stmt->fetchAll();
@@ -68,7 +68,7 @@ class Album {
 	}
 	public static function getListFromNote($note) {
 		$db = Database::getInstance();
-		$sql = "SELECT * FROM album Al JOIN artiste Art ON (Al.idArt = Art.idArt) WHERE Al.note ='$note'";
+		$sql = "SELECT * FROM album Al JOIN artiste Art ON (Al.idArt = Art.idArt) WHERE Al.note ='$note' ORDER BY nomArt Asc";
 		$stmt = $db->query($sql);
 		$stmt->setFetchMode(PDO::FETCH_CLASS, "Album");
 		return $stmt->fetchAll();
