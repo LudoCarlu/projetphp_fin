@@ -26,7 +26,7 @@ class AdministrateurController extends Controller {
 	
 	public function supprimerCommentaire() {
 		$idC= $this->route["params"]["idC"];
-		Administrateur::supprimerCommentaire($idC);
+		Commentaire::supprimerCommentaire($idC);
 		header('Refresh: 0 ;/public/administrateur/commentaire');
 	}
 }

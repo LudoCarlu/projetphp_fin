@@ -47,12 +47,6 @@ class Administrateur extends Model {
 		$stmt->execute();
 	}
 	
-	public static function supprimerCommentaire($idC) {
-		$db = Database::getInstance();
-		$sql = "DELETE FROM commentaire WHERE idC = :idC";
-		$stmt = $db->prepare($sql);
-		$stmt->bindValue(':idC',$idC,PDO::PARAM_STR);
-		$stmt->execute();
-	}
+
 }
 ?>

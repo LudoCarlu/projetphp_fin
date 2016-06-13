@@ -58,6 +58,13 @@ class AlbumController extends Controller {
 			$this->view->display(); 
 		}
 	}
+	
+	public function supprimerCommentaire() {
+		$idC= $this->route["params"]["idC"];
+		$idAl = $this->route["params"]["idAl"];
+		Commentaire::supprimerCommentaire($idC);
+		header('Refresh: 0 ;/public/album/afficher/'.$idAl);
+	}
 }
 	
 

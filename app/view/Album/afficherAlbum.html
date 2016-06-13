@@ -74,8 +74,12 @@
 			<h4>Liste des commentaires</h4>
 			<table class="table table-bordered">
 				<?php foreach($this->com as $coms) { ?>
-				<tr><td><?php echo $coms->commentaire."<br><small>".$coms->idU." ".$coms->date."</small>"; ?></td></tr>
-				<?php } //endforeach ?>
+				<tr>
+					<td><?php echo $coms->commentaire."<br><small>".$coms->idU." ".$coms->date."</small>"; ?></td>
+					<?php if(isset($_SESSION['droit']) && $_SESSION['droit'] == "administrateur") { ?>
+					<td><a href='<?php echo BASE_URL."/album/supprimerCommentaire/".$coms->idC."/".$coms->idAl;?>'class="btn btn-info"><i class="icon icon-remove"><i></a></td>
+				</tr>
+				<?php }} //endforeach ?>
 			</table>
 		 <footer>
 			 <hr>

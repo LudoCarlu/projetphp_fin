@@ -44,5 +44,13 @@ class Commentaire extends Model {
       ':date' => $y."-".$m."-".$d." ".$heure.":".$min.":".$sec
     ));
   }
+	public static function supprimerCommentaire($idC) {
+		$db = Database::getInstance();
+		$sql = "DELETE FROM commentaire WHERE idC = :idC";
+		$stmt = $db->prepare($sql);
+		$stmt->bindValue(':idC',$idC,PDO::PARAM_STR);
+		$stmt->execute();
+	}
+	
 }
 ?>

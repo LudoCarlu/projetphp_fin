@@ -119,6 +119,12 @@ class Router {
 				  $result["action"] = "afficherAlFromGenre";
 				  $result["params"]["post"]= $_POST;
 			  }
+				if ((count($parts) == 4 ) && ($parts[1] == "supprimerCommentaire")) {
+					$result["controller"] = "Album";
+					$result["action"] = "supprimerCommentaire";
+					$result["params"]["idC"] = $parts[2];
+					$result["params"]["idAl"] = $parts[3];
+				}
 				
 			  //
 			 if ((count($parts) == 2) && ($parts[1] == "ajouterAlbum")) {
