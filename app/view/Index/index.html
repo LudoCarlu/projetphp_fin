@@ -127,11 +127,9 @@
 								<table>
 									<tr><td>
 										<select name="note">
-												<option value="1">1</option>
-												<option value="2">2</option>
-												<option value="3">3</option>
-												<option value="4">4</option>
-												<option value="5">5</option>
+											<?php foreach($this->listeNote as $notes) { ?>
+												<option value="<?php echo $notes->note;?>"><?php echo $notes->note; ?></option>
+											<?php } ?>
 										</select>
 									</td></tr>
 										<td><input type="submit" value="Rechercher" class="btn btn-info"/></td>
