@@ -15,6 +15,8 @@ class Connexion extends Model {
 		$stmt2->execute();
     $resultat = $stmt->fetch();
     $resultat2 = $stmt2->fetch();
+		
+		
     
     if ($resultat['mdpU'] == $mdp ) {
 			session_start();

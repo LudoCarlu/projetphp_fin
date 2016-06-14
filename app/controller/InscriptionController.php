@@ -8,14 +8,9 @@ class InscriptionController extends Controller {
   public function verifierInscription() {
     extract($_POST);
     if(isset($pseudo) && isset($mdp1) && isset ($mdp2) && isset($email) && isset($prenom) && isset($nom)) {
-      if($mdp1 != $mdp2) {
-        echo "<p>Les mots de passe ne sont pas identiques</p>";
-      }
-      else {
-        $this->view->inscription = Inscription::envoiInscription($pseudo,$mdp1,$email,$prenom,$nom);
+        $this->view->inscription = Inscription::envoiInscription($pseudo,$mdp1,$mdp2,$email,$prenom,$nom);
 				$this->view->display();
-      } 
-    }
+    } 
   }
 }
 ?>

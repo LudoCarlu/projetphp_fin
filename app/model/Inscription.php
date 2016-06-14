@@ -3,7 +3,7 @@
 class Inscription extends Model {
 	public $nom, $prenom, $email, $pseudo, $mdp ;
   
-	public static function envoiInscription($pseudo,$mdp1,$email,$prenom,$nom) {                                                                                                  
+	public static function envoiInscription($pseudo,$mdp1,$mdp2,$email,$prenom,$nom) {                                                                                                
 		$db = Database::getInstance();
 		
 		$sql = "SELECT * FROM utilisateur WHERE pseudo = :pseudo";
@@ -32,16 +32,21 @@ class Inscription extends Model {
 		$resultat4 = $stmt4->fetch();
 		
 		if (!$resultat && !$resultat2 && !$resultat3 && !$resultat4) {
-			$insert = "INSERT INTO inscription VALUES (:prenom,:nom,:pseudo,:email,:mdp1)";
-			$stmtinsert = $db->prepare($insert);
-    	$stmtinsert->setFetchMode(PDO::FETCH_CLASS, "Inscription");
-			return $stmtinsert->execute(array(
-      'prenom'=>$prenom,
-			'nom'=>$nom,
-			'pseudo'=>$pseudo,
-			'email'=>$email,
-      'mdp1'=>$mdp1
-    ));
+			if($mdp1 != $mdp2) {
+				$_SESSION['message'] = "<p> Les mots de passe de correspondent pas </p>";
+			}
+			else {
+				$insert = "INSERT INTO inscription VALUES (:prenom,:nom,:pseudo,:email,:mdp1)";
+				$stmtinsert = $db->prepare($insert);
+				$stmtinsert->setFetchMode(PDO::FETCH_CLASS, "Inscription");
+				return $stmtinsert->execute(array(
+				'prenom'=>$prenom,
+				'nom'=>$nom,
+				'pseudo'=>$pseudo,
+				'email'=>$email,
+				'mdp1'=>$mdp1
+			));
+			}
 		} else {
 			if($resultat || $resultat2) {
 				$_SESSION['message'] = "<p> Votre pseudo est deja pris </p>";
