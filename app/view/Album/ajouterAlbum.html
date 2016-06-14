@@ -42,10 +42,10 @@
           <td><label>Nom de l'artiste </label></td>
           <td>
             <select name="nomArt" required>
-      <?php foreach($this->list as $artiste) : ?>
-      <option><strong><?php echo $artiste->nomArt;?></strong></option>
-      <?php endforeach;?>
-   </select></td>
+              <?php foreach($this->list as $artiste) : ?>
+              <option><strong><?php echo $artiste->nomArt;?></strong></option>
+              <?php endforeach;?>
+            </select></td>
           <td><a href='<?php echo BASE_URL."/artiste/envoyerArtiste"?>'><I>L'artiste n'est pas dans la liste?</I></a></td>
         </tr>
         <tr>

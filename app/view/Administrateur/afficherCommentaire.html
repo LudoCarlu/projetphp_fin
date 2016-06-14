@@ -1,41 +1,56 @@
 <?php session_start(); ?>
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8"/>
+
+<head>
+	<meta charset="utf-8" />
 	<link href="<?php echo BASE_URL.'/css/bootstrap.css';?>" rel="stylesheet" />
 
-		<title>Frencheese - Liste des commetaires</title>
-	</head>
-	<body>
-		<div class="container">
-			<div class="page-header">
-				<h1>Liste des commentaires</h1>
-			</div>
-			<table class="table table-stripped">
-				<thead>
-					<tr>
-						<th></th><th>Id Album</th><th>Id utilisateur</th><th>Date</th><th>Texte</th>
-					</tr>
-				</thead>
-				<tbody>
-					<?php foreach($this->list as $coms) : ?>
-					<tr>
-						<td><a href='<?php echo BASE_URL."/administrateur/supprimerCommentaire/".$coms->idC;?>'class="btn btn-info"><i class="icon icon-remove"></i></a></td>
-						<td><?php echo $coms->idAl;?></td>
-						<td><?php echo $coms->idU;?></td>
-						<td><?php echo $coms->date;?></td>
-						<td><?php echo $coms->commentaire;?></td>	
-					</tr>
-					<?php endforeach;?>
-				</tbody>
-			</table>
-			<footer>
-				<hr>
-				<div class="text-center">
-					<a href="<?php echo BASE_URL;?>">page d'accueil</a>
-				</div>
-			</footer>
+	<title>Frencheese - Liste des commetaires</title>
+</head>
+
+<body>
+	<div class="container">
+		<div class="page-header">
+			<h1>Liste des commentaires</h1>
 		</div>
-	</body>
+		<table class="table table-stripped">
+			<thead>
+				<tr>
+					<th></th>
+					<th>Id Album</th>
+					<th>Id utilisateur</th>
+					<th>Date</th>
+					<th>Texte</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php foreach($this->list as $coms) : ?>
+				<tr>
+					<td><a href='<?php echo BASE_URL."/administrateur/supprimerCommentaire/".$coms->idC;?>' class="btn btn-info"><i class="icon icon-remove"></i></a></td>
+					<td>
+						<?php echo $coms->idAl;?>
+					</td>
+					<td>
+						<?php echo $coms->idU;?>
+					</td>
+					<td>
+						<?php echo $coms->date;?>
+					</td>
+					<td>
+						<?php echo $coms->commentaire;?>
+					</td>
+				</tr>
+				<?php endforeach;?>
+			</tbody>
+		</table>
+		<footer>
+			<hr>
+			<div class="text-center">
+				<a href="<?php echo BASE_URL;?>">page d'accueil</a>
+			</div>
+		</footer>
+	</div>
+</body>
+
 </html>

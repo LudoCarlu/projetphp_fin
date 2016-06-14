@@ -1,20 +1,22 @@
 <?php session_start(); ?>
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8"/>
+
+<head>
+	<meta charset="utf-8" />
 	<link href="<?php echo BASE_URL.'/css/bootstrap.css';?>" rel="stylesheet" />
 
-		<title>Album - Freencheese</title>
-	</head>
-	<body>
-		<div class="container">
-			<div class="page-header">
-				<ul class="nav nav-pills pull-right">
-					<li> <a href="<?php echo BASE_URL.'/artiste';?>">Artistes</a></li>
-					<li> <a href="<?php echo BASE_URL.'/album';?>">Albums</a></li>
-					<li> <a href="<?php echo BASE_URL.'/contact';?>">Contacts</a></li>
-					<?php
+	<title>Album - Freencheese</title>
+</head>
+
+<body>
+	<div class="container">
+		<div class="page-header">
+			<ul class="nav nav-pills pull-right">
+				<li> <a href="<?php echo BASE_URL.'/artiste';?>">Artistes</a></li>
+				<li> <a href="<?php echo BASE_URL.'/album';?>">Albums</a></li>
+				<li> <a href="<?php echo BASE_URL.'/contact';?>">Contacts</a></li>
+				<?php
 					if (isset($_SESSION['droit'])) {
 						$co = "Deconnexion";
 						$lien = BASE_URL.'/deconnexion';
@@ -27,41 +29,55 @@
 					?>
 					<li> <a href="<?php echo BASE_URL.'/inscription';?>">Inscription</a></li>
 					<?php } ?>
-					<li> <a href="<?php echo $lien;?>"><?php echo $co ?></a></li>
-				</ul>
-				<h1>Listes des albums</h1>
-			</div>
-			<?php if(isset($_SESSION['droit'])) { ?>
-			<table class="table table-stripped">
-				<thead>
-					<tr>
-						<th>Titre de l'album</th><th>Artiste</th><th>Genre</th><th></th>
-					</tr>
-				</thead>
-				<tbody>
-					<?php foreach($this->list as $album) : ?>
-					<tr>
-						<td><?php echo $album->nomAl;?></td>
-						<td><?php echo $album->nomArt;?></td>
-						<td><?php echo $album->genre;?></td>
-						<td><a href='<?php echo BASE_URL."/album/afficher/".$album->idAl;?>' class="btn btn-info"><i class="icon icon-search"></i></a>
-						</td>
-					</tr>
-					<?php endforeach;?>
-				</tbody>
-			</table>
-				<a href='<?php echo BASE_URL."/album/ajouterAlbum"?>' class="ajoutNew">Ajouter un nouvel album</a>
-			<?php } 
+					<li>
+						<a href="<?php echo $lien;?>">
+							<?php echo $co ?>
+						</a>
+					</li>
+			</ul>
+			<h1>Listes des albums</h1>
+		</div>
+		<?php if(isset($_SESSION['droit'])) { ?>
+		<table class="table table-stripped">
+			<thead>
+				<tr>
+					<th>Titre de l'album</th>
+					<th>Artiste</th>
+					<th>Genre</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php foreach($this->list as $album) : ?>
+				<tr>
+					<td>
+						<?php echo $album->nomAl;?>
+					</td>
+					<td>
+						<?php echo $album->nomArt;?>
+					</td>
+					<td>
+						<?php echo $album->genre;?>
+					</td>
+					<td><a href='<?php echo BASE_URL."/album/afficher/".$album->idAl;?>' class="btn btn-info"><i class="icon icon-search"></i></a>
+					</td>
+				</tr>
+				<?php endforeach;?>
+			</tbody>
+		</table>
+		<a href='<?php echo BASE_URL."/album/ajouterAlbum"?>' class="ajoutNew">Ajouter un nouvel album</a>
+		<?php } 
 			else {
 				echo "<p> Pour voir les albums il vous faut être inscrit et connecté. </p>"; ?>
-					<p> <a href="<?php echo $lien;?>">-> Pour vous connecter</a></p>
-					<p> <a href="<?php echo BASE_URL.'/inscription';?>"> -> Par encore inscrit c'est par ici</a></p>
-			<?php } //Fin else ?>
-			<footer>
-				<div class="text-center">
-					<a href="<?php echo BASE_URL;?>">page d'accueil</a>
-				</div>
-			</footer>
-		</div>
-	</body>
+		<p> <a href="<?php echo $lien;?>">-> Pour vous connecter</a></p>
+		<p> <a href="<?php echo BASE_URL.'/inscription';?>"> -> Par encore inscrit c'est par ici</a></p>
+		<?php } //Fin else ?>
+		<footer>
+			<div class="text-center">
+				<a href="<?php echo BASE_URL;?>">page d'accueil</a>
+			</div>
+		</footer>
+	</div>
+</body>
+
 </html>

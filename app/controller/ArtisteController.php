@@ -3,8 +3,8 @@
 class ArtisteController extends Controller {
  
  public function afficherListe(){
-  $this->view->list = Artiste::getList();
-  $this->view->display(); 
+   $this->view->list = Artiste::getList();
+   $this->view->display(); 
 
  }
  public function afficherArtiste() {
@@ -19,10 +19,10 @@ class ArtisteController extends Controller {
   
  public function envoyerArtiste() {
   $data = $this->route["params"]["post"];
-    if(isset($data['nomArt']) && isset($data['anneeNaiss']) && isset($data['biographie'])) {
+  if(isset($data['nomArt']) && isset($data['anneeNaiss']) && isset($data['biographie'])) {
    $this->view->artiste = Artiste::envoyerArtiste($data['nomArt'],$data['anneeNaiss'],$data['biographie']);
   }
-   else {
+  else {
    echo "Le champ 'Nom d'artiste' n'a pas ete correctement remplie";
   }
   header('location: ajouterArtiste');

@@ -23,7 +23,6 @@ class Administrateur extends Model {
 		//On l'insert dans la base utilisateur
 		$sql = "INSERT INTO utilisateur (email,mdpU,pseudo,nomU,prenomU) VALUES (:email,:mdp,:pseudo,:nom,:prenom)";
 		$stmt = $db->prepare($sql);
-		//$stmt->setFetchMode(PDO::FETCH_CLASS, "Utilisateur");
 		$stmt->execute(array(
       'prenom'=>$res['prenom'],
 			'nom'=>$res['nom'],

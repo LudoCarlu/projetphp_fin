@@ -26,10 +26,11 @@ class AlbumController extends Controller {
 		$this->view->com = Commentaire::getListeFromAlbum($idAl);
 		$this->view->display();
 	}
+	
 	public function ajouterAlbum(){
 		$this->view->list = Artiste::getList();
   	$this->view->display();
- }
+ 	}
 	
  	public function envoyerAlbum() {
   	$data = $this->route["params"]["post"];

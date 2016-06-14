@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		 <meta charset="utf-8"/>
-		 <title><?php echo $this->album->nomAl ?>- Frencheese</title>
-		 <link href='<?php echo BASE_URL."/css/bootstrap.css";?>' rel="stylesheet" />
-	</head>
-	<body>
-		<div class="container">
-			<div class="page-header">
-				<ul class="nav nav-pills pull-right">
-					<li> <a href="<?php echo BASE_URL.'/artiste';?>">Artistes</a></li>
-					<li> <a href="<?php echo BASE_URL.'/album';?>">Albums</a></li>
-					<li> <a href="<?php echo BASE_URL.'/contact';?>">Contacts</a></li>
-					<?php
+
+<head>
+	<meta charset="utf-8" />
+	<title>
+		<?php echo $this->album->nomAl ?>- Frencheese</title>
+	<link href='<?php echo BASE_URL."/css/bootstrap.css";?>' rel="stylesheet" />
+</head>
+
+<body>
+	<div class="container">
+		<div class="page-header">
+			<ul class="nav nav-pills pull-right">
+				<li> <a href="<?php echo BASE_URL.'/artiste';?>">Artistes</a></li>
+				<li> <a href="<?php echo BASE_URL.'/album';?>">Albums</a></li>
+				<li> <a href="<?php echo BASE_URL.'/contact';?>">Contacts</a></li>
+				<?php
 					if (isset($_SESSION['droit'])) {
 						$co = "Deconnexion";
 						$lien = BASE_URL.'/deconnexion';
@@ -21,70 +24,108 @@
 						$lien = BASE_URL.'/connexion';
 					}
 					?>
-					<li> <a href="<?php echo $lien;?>"><?php echo $co ?></a></li>
+					<li>
+						<a href="<?php echo $lien;?>">
+							<?php echo $co ?>
+						</a>
+					</li>
+			</ul>
+			<h3><?php echo $this->album->nomAl;?></h3>
+		</div>
+		<table class="table table-bordered">
+			<tr>
+				<td>Titre de l'album</td>
+				<td>
+					<?php echo $this->album->nomAl;?>
+				</td>
+			</tr>
+			<tr>
+				<td>Nom de l'artiste</td>
+				<td><strong><?php echo $this->album->nomArt ;?></strong></td>
+			</tr>
+			<tr>
+				<td>Genre </td>
+				<td>
+					<?php echo $this->album->genre;?>
+				</td>
+			</tr>
+			<tr>
+				<td>Date de sortie</td>
+				<td>
+					<?php echo $this->album->dateAl;?>
+				</td>
+			</tr>
+			<tr>
+				<td>Note</td>
+				<td>
+					<?php echo $this->album->note?>
+				</td>
+			</tr>
+		</table>
+		<br>
+		<legend>
+			<h4>Note </h4></legend>
+		<form method="post" action='<?php echo BASE_URL."/album/afficher/".$this->album->idAl;?>'>
+			<table>
+				<ul class="notes-echelle">
+					<li>
+						<label for="note01" title="Note&nbsp;: 1 sur 5">1</label>
+						<input type="radio" name="note" id="note01" value="1" />
+					</li>
+					<li>
+						<label for="note02" title="Note&nbsp;: 2 sur 5">2</label>
+						<input type="radio" name="note" id="note02" value="2" />
+					</li>
+					<li>
+						<label for="note03" title="Note&nbsp;: 3 sur 5">3</label>
+						<input type="radio" name="note" id="note03" value="3" />
+					</li>
+					<li>
+						<label for="note04" title="Note&nbsp;: 4 sur 5">4</label>
+						<input type="radio" name="note" id="note04" value="4" />
+					</li>
+					<li>
+						<label for="note05" title="Note&nbsp;: 5 sur 5">5</label>
+						<input type="radio" name="note" id="note05" value="5" />
+					</li>
 				</ul>
-				<h3><?php echo $this->album->nomAl;?></h3>
-			</div>
-			<table class="table table-bordered">
-				<tr><td>Titre de l'album</td><td><?php echo $this->album->nomAl;?></td></tr>
-				<tr><td>Nom de l'artiste</td><td><strong><?php echo $this->album->nomArt ;?></strong></td></tr>
-				<tr><td>Genre </td><td><?php echo $this->album->genre;?></td></tr>
-				<tr><td>Date de sortie</td><td><?php echo $this->album->dateAl;?></td></tr>
-				<tr><td>Note</td><td><?php echo $this->album->note?></td></tr>
-			</table>
-			<br>
-			<legend><h4>Note </h4></legend>
-			<form method="post" action='<?php echo BASE_URL."/album/afficher/".$this->album->idAl;?>'>
-				<table>
-					<ul class="notes-echelle">
-						<li>
-							<label for="note01" title="Note&nbsp;: 1 sur 5">1</label>
-							<input type="radio" name="note" id="note01" value="1" />
-						</li>
-						<li>
-							<label for="note02" title="Note&nbsp;: 2 sur 5">2</label>
-							<input type="radio" name="note" id="note02" value="2" />
-						</li>
-						<li>
-							<label for="note03" title="Note&nbsp;: 3 sur 5">3</label>
-							<input type="radio" name="note" id="note03" value="3" />
-						</li>
-						<li>
-							<label for="note04" title="Note&nbsp;: 4 sur 5">4</label>
-							<input type="radio" name="note" id="note04" value="4" />
-						</li>
-						<li>
-							<label for="note05" title="Note&nbsp;: 5 sur 5">5</label>
-							<input type="radio" name="note" id="note05" value="5" />
-						</li>
-					</ul>
-					<tr><td></td></tr>
-					<tr><td><input type="submit" class="ajoutNew" value="Envoyer" /></td></tr>
-				</table>
-			</form>
-			<br>
-			<legend><h4>Commentaires</h4></legend>
-			<form method="post" action='<?php echo BASE_URL."/album/afficher/".$this->album->idAl;?>'>
-				<table>
-					<tr><td><textarea rows="3" cols="200" placeholder="Ajouter un commentaire.." name="commentaire"></textarea></td></tr>
-					<tr><td><input type="submit" class="ajoutNew" value="Envoyer" /></td></tr>
-				</table>
-			</form>
-			<br>
-			<h4>Liste des commentaires</h4>
-			<table class="table table-bordered">
-				<?php foreach($this->com as $coms) { ?>
 				<tr>
-					<td><?php echo $coms->commentaire."<br><small>".$coms->idU." ".$coms->date."</small>"; ?></td>
-					<?php if(isset($_SESSION['droit']) && $_SESSION['droit'] == "administrateur") { ?>
-					<td><a href='<?php echo BASE_URL."/album/supprimerCommentaire/".$coms->idC."/".$coms->idAl;?>'class="btn btn-info"><i class="icon icon-remove"><i></a></td>
+					<td></td>
 				</tr>
-				<?php }} //endforeach ?>
+				<tr>
+					<td><input type="submit" class="ajoutNew" value="Envoyer" /></td>
+				</tr>
 			</table>
-		 <footer>
-			 <hr>
-			 <p class="text-center"><a href='<?php echo BASE_URL?>'>retour à la page d'acceuil</a></p>
-		 </footer>
-		 </div>
-	</body>
+		</form>
+		<br>
+		<legend>
+			<h4>Commentaires</h4></legend>
+		<form method="post" action='<?php echo BASE_URL."/album/afficher/".$this->album->idAl;?>'>
+			<table>
+				<tr>
+					<td><textarea rows="3" cols="200" placeholder="Ajouter un commentaire.." name="commentaire"></textarea></td>
+				</tr>
+				<tr>
+					<td><input type="submit" class="ajoutNew" value="Envoyer" /></td>
+				</tr>
+			</table>
+		</form>
+		<br>
+		<h4>Liste des commentaires</h4>
+		<table class="table table-bordered">
+			<?php foreach($this->com as $coms) { ?>
+			<tr>
+				<td><?php echo $coms->commentaire."<br><small>".$coms->idU." ".$coms->date."</small>"; ?></td>
+				<?php if(isset($_SESSION['droit']) && $_SESSION['droit'] == "administrateur") { ?>
+				<td><a href='<?php echo BASE_URL."/album/supprimerCommentaire/".$coms->idC."/".$coms->idAl;?>' class="btn btn-info"><i class="icon icon-remove"></i></a></td>
+			</tr>
+			<?php }} //endforeach ?>
+		</table>
+		<footer>
+			<hr>
+			<p class="text-center"><a href='<?php echo BASE_URL?>'>retour à la page d'acceuil</a></p>
+		</footer>
+	</div>
+</body>
+
 </html>

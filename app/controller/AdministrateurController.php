@@ -30,3 +30,4 @@ class AdministrateurController extends Controller {
 		header('Refresh: 0 ;/public/administrateur/commentaire');
 	}
 }
+?>
