@@ -64,6 +64,13 @@ class Note extends Model {
 			return $res2;
 		}
 	}
+	public static function listeNoteAlbum() {
+		$db = Database::getInstance();
+		$sql = "SELECT DISTINCT note FROM album ORDER BY note DESC";
+		$stmt= $db->query($sql);
+		$stmt->setFetchMode(PDO::FETCH_CLASS, "Album");
+		return $stmt->fetchAll();
+	}
 	
 }
 ?>
