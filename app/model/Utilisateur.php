@@ -12,7 +12,7 @@ class Utilisateur {
 	
 	public static function getList() {
 		$db = Database::getInstance();
-		$sql = "SELECT * FROM utilisateur";
+		$sql = "SELECT * FROM utilisateur ORDER BY pseudo ASC";
 		$stmt = $db->query($sql);
 		$stmt->setFetchMode(PDO::FETCH_CLASS, "Utilisateur");
 		return $stmt->fetchAll();

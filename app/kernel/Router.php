@@ -83,8 +83,18 @@ class Router {
 					  $result["controller"] = "Utilisateur";
 					  $result["action"] = "afficherUtilisateur";
 					  $result["params"]["id"] = $parts[2];        
-				}	  
+				}
+				if ((count($parts) == 3) && ($parts[1] == "afficherProfil") && ($parts[0] == "utilisateur")){
+				  $result["controller"] = "Utilisateur";
+				  $result["action"] = "afficherUtilisateur";
+				  $result["params"]["post"]= $_POST;
+			  }
+				     
+				
+				
 		  }
+			
+			
 			
 			if($parts[0] == "album")  {
 			  if (count($parts) == 1){

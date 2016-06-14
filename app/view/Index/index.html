@@ -42,7 +42,8 @@
 				<li>Donner votre avis sur un album ou un artiste en commentaire, ou en notant.</li>
 				<li>Ajouter vos artistes et albums préférés dans notre base de données.</li>
 			</ul>
-		</p>
+		</p
+		<br>
 		<br>
 		<?php if (isset($_SESSION['droit'])) { ?>
 		<p>
@@ -142,6 +143,29 @@
 				</tr>
 				
 			</table>	
+			<table>
+				<tr>
+					<td>
+						<p>
+							<h4>Rechercher un profil d'utilisateur</h4>
+							<form method="post" action='<?php echo BASE_URL."/utilisateur/afficherProfil/";?>'
+								<table>
+									<tr>
+										<td><select name="idU">
+											<?php foreach($this->utilisateur as $utilisateurs) : ?>
+											<option value="<?php echo $utilisateurs->idU;?>"><?php echo $utilisateurs->pseudo ?></option>
+											<?php endforeach; ?>
+										</select></td>
+									</tr>
+									<tr>
+										<td><input type="submit" value="Rechercher" class="btn btn-info"/></td>
+									</tr>
+								</table>
+							</form>
+						</p>
+					</td>
+				</tr>
+			</table>
 			
 			
 		<?php } ?>

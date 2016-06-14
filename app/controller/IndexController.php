@@ -6,6 +6,7 @@ class IndexController extends Controller {
       $this->view->palmares = Album::palmares();
       $this->view->listeArtiste = Artiste::getList();
       $this->view->listeGenre = Album::getListGenre();
+      $this->view->utilisateur = Utilisateur::getList();
       $this->view->display();
    }
 
