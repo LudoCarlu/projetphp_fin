@@ -12,6 +12,13 @@ class Router {
 			
 		} else {
 		  $parts = explode("/", $query);
+			
+			if($parts[0] == "rapport") {
+				 if (count($parts) == 1){
+				  $result["controller"] = "Rapport";
+				  $result['action'] = "rapport";
+			  }
+			}
 		  if($parts[0] == "contact")  {
 			  if (count($parts) == 1){
 				  $result["controller"] = "Contact";

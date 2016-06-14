@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<link href="<?php echo BASE_URL.'/css/bootstrap.css';?>" rel="stylesheet" />
+	<title>Rapport - Frencheese</title>
+</head>
+
+<body>
+	<div class="container">
+		<div class="page-header">
+			<ul class="nav nav-pills pull-right">
+				<li> <a href="<?php echo BASE_URL.'/artiste';?>">Artistes</a></li>
+				<li> <a href="<?php echo BASE_URL.'/album';?>">Albums</a></li>
+				<li> <a href="<?php echo BASE_URL.'/utilisateur';?>">Utilisateurs</a></li>
+				<li> <a href="<?php echo BASE_URL.'/contact';?>">Contacts</a></li>
+			</ul>
+			<h3 class="muted">Frencheese - Rapport </h3>
+		</div>
+		
+		<p>
+			Temps passé : ?
+		</p>
+		<p>
+			Repartition des taches <br> Ludo
+			<ul>
+				<li>Gestion des connexions (grace au session)</li>
+				<li>Gestion des inscriptions (avec Validation de l'admin) </li>
+				<li>Gestion de l'administrateur(Moderation,Ajout) </li>
+				<li>Gestion des commentaires (Ajout,moderation) </li>
+				<li>Palmares / Actualite</li>
+			</ul>
+			Vincent
+			<ul>
+				<li>Affichages des differentes listes (Artistes,albums,contacts,utilisateurs)</li>
+				<li>Pages de detail d'un album ou artistes</li>
+				<li>Note d'un album</li>
+				<li>Ajout d'album et d'artiste</li>
+				<li>Recherche qui sont dans l'index </li>
+			</ul>
+		
+		</p>
+		
+		<p>Ce que l'on peut faire sur le site</br>
+			<ul>
+				<li>Faire une demande d'inscription</li>
+				<li>Posséder son propre compte utilisateur si l'admin vous accepte</li>
+				<li>Consulter des artistes et/ou des albums </li>
+				<li>Ajouter à la base du site un artiste ou un album </li>
+				<li>Exprimer un commentaire sur un album</li>	
+				<li>Noter un album (une seule note, modifiable)</li>
+			</ul>
+		</p>
+		<p>
+			Faire des recherches :
+			<ul>
+				<li>Sur un album par artiste, genre, date, note</li>
+				<li>Sur un utilisateur : Grace a son pseudo <br>
+				(s'il a mit un commentaire ou une note cela s'affichera dans sa description sinon ne s'affiche pas)</li>
+			</ul>
+		</p>
+		<p>
+			Pour les connexions (Seulement si l'utilisateur est connecté)
+			<ul>
+				<li>Voir l'actualité et un palmares sur la page index</li>
+				<li>Pouvoir voir les listes d'albums et acceder à leur description</li>
+				<li>Pouvoir voir les listes d'artistes et acceder à leur description</li>
+				<li>Peut commenter,noter,faire des recherches et se balader librement dans le site</li>
+				<li>La notation et les commentaires se trouvent dans la description d'un album</li>
+			</ul>
+		</p>
+		<p>
+			Un administrateur peut que s'il est connecté
+			<ul>
+				<li>Compte admin : admin mdp: admin</li>
+				<li>Dans l'index : A acces a une liste de demande d'inscription et a la liste de tous les commentaires</li>
+				<li>Il peut supprimer les commentaires depuis la vue de l'album ou dans sa liste personnelle de tous les commentaires</li>
+				<li>Dans la liste des demandes d'inscription il peut choisir d'ajouter ou supprimer les demandeurs</li>
+			</ul>
+		</p>
+		<hr>
+		<div class="text-center">
+			<a href="<?php echo BASE_URL;?>">page d'accueil</a>
+		</div>
+		</footer>
+	</div>
+</body>
+
+</html>
