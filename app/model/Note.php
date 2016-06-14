@@ -60,6 +60,7 @@ class Note extends Model {
 			$sql = "UPDATE album SET note=$res2->note WHERE idAl=$idAl";
 			$stmt = $db->query($sql);
 			$stmt->setFetchMode(PDO::FETCH_CLASS, "Note");
+			return $res2;
 		}
 	}
 	

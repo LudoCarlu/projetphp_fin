@@ -12,14 +12,10 @@ class InscriptionController extends Controller {
         echo "<p>Les mots de passe ne sont pas identiques</p>";
       }
       else {
-        //Cryptage du mdp
-        //$mdp1 = sha1($mdp1);
         $this->view->inscription = Inscription::envoiInscription($pseudo,$mdp1,$email,$prenom,$nom);
 				$this->view->display();
       } 
     }
-		//echo "<p> Un administrateur prendra en charge votre demande </p>";
-		
   }
 }
 ?>

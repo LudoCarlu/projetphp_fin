@@ -21,7 +21,7 @@ class AlbumController extends Controller {
 			$idU = $_SESSION['id'];
 			Note::ajouterNote($idAl,$idU,$note);
 		}
-		Note::CalculMoyFromId($idAl); 
+		$this->view->note = Note::CalculMoyFromId($idAl);
 		$this->view->album = Album::getFromId($idAl);
 		$this->view->com = Commentaire::getListeFromAlbum($idAl);
 		$this->view->display();
