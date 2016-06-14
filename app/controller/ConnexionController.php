@@ -13,6 +13,7 @@ class ConnexionController extends Controller {
   }
 	public function deconnexion() {
 			session_start();
+			Connexion::changeDateDeco();
 			session_unset();
 			session_destroy();
 			$this->view->display();

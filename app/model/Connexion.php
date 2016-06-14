@@ -21,6 +21,9 @@ class Connexion extends Model {
       $_SESSION['pseudo'] = $resultat['pseudo'];
       $_SESSION['id'] = $resultat['idU'];
       $_SESSION['droit'] = 'utilisateur';
+			if($resultat["dateDeco"] != null) {
+				$_SESSION["dateDeco"] = $resultat["dateDeco"];
+			}
       $message = '<p>Bienvenue '.$_SESSION['pseudo'].', vous etes maintenant connecte !</p>';
     }
     if ($resultat2['mdpAdmin'] == $mdp) {
@@ -28,6 +31,9 @@ class Connexion extends Model {
       $_SESSION['pseudo'] = $resultat2['pseudo'];
       $_SESSION['id'] = $resultat2['idA'];
       $_SESSION['droit'] = 'administrateur';
+			if($resultat2["dateDeco"] != null) {
+				$_SESSION["dateDeco"] = $resultat2["dateDeco"];
+			}
       $message = '<p>Bienvenue '.$_SESSION['pseudo'].', vous etes maintenant connecte !</p>';
     }
     
@@ -37,5 +43,31 @@ class Connexion extends Model {
     $_SESSION['message'] = $message;
     
 	}
+	
+	public function changeDateDeco() {
+		$aujourdhui = getdate();
+    $d = $aujourdhui['mday'];
+    $m = $aujourdhui['mon'];
+    $y = $aujourdhui['year'];
+    $heure = $aujourdhui['hours'];
+    $min = $aujourdhui['minutes'];
+    $sec = $aujourdhui['seconds'];
+		
+		if($_SESSION["droit"] == "administrateur") {
+			$db = Database::getInstance();
+			$sql = "UPDATE administrateur SET dateDeco ='$y-$m-$d $heure:$min:$sec' WHERE idA =".$_SESSION['id'];
+			$stmt = $db->query($sql);
+			$stmt->fetch();
+		}
+		if($_SESSION["droit"] == "utilisateur") {
+			$db = Database::getInstance();
+			$sql = "UPDATE utilisateur SET dateDeco ='$y-$m-$d $heure:$min:$sec' WHERE idU =".$_SESSION['id'];
+			$stmt = $db->query($sql);
+			$stmt->fetch();
+		}
+		
+	}
+	
+	
 }
 ?>

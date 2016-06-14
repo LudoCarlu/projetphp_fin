@@ -53,5 +53,14 @@ class Commentaire extends Model {
 		$stmt->execute();
 	}
 	
+	public static function listeComDerConnexion($date) {
+		$db = Database::getInstance();
+		$sql = "SELECT U.pseudo,A.nomAl,Art.nomArt,C.commentaire,C.date FROM commentaire C JOIN album A JOIN artiste Art JOIN utilisateur U
+						ON (C.idAl = A.idAl AND A.idArt=Art.idArt AND C.idU = U.idU) 
+						WHERE C.date >='$date' ORDER BY date DESC LIMIT 5";
+		$stmt = $db->query($sql);
+		$stmt->setFetchMode(PDO::FETCH_CLASS, "Commentaire");
+		return $stmt->fetchAll();
+	}
 }
 ?>

@@ -14,8 +14,22 @@
 					<li> <a href="<?php echo BASE_URL.'/utilisateur';?>">Utilisateurs</a></li>
 					<li> <a href="<?php echo BASE_URL.'/album';?>">Albums</a></li>
 					<li> <a href="<?php echo BASE_URL.'/contact';?>">Contacts</a></li>
-					<li> <a href="#">A propos</a></li>
+					<?php
+					if (isset($_SESSION['droit'])) {
+						$co = "Deconnexion";
+						$lien = BASE_URL.'/deconnexion';
+					} else {
+						$co = "Connexion";
+						$lien = BASE_URL.'/connexion';
+					}
+					if(!isset($_SESSION['droit'])) { ?>
 					<li> <a href="<?php echo BASE_URL.'/inscription';?>">Inscription</a></li>
+					<?php } ?>
+					<li>
+						<a href="<?php echo $lien;?>">
+							<?php echo $co ?>
+						</a>
+					</li>
 				</ul>
 				<h3 class="muted">Frencheese </h3>
 		  </div>

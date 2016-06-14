@@ -9,6 +9,7 @@ class Router {
     if( $query === "" || $query === "/" ) {
     	$result["controller"] = "Index";
 		 	$result["action"] = "index";
+			
 		} else {
 		  $parts = explode("/", $query);
 		  if($parts[0] == "contact")  {
@@ -19,7 +20,7 @@ class Router {
 			  if ((count($parts) == 2) && ($parts[1] == "afficher")){
             $result["controller"] = "Index";
             $result["action"] = "afficherListe";
-            //$result["params"]["slug"] = $parts[1];            
+                       
 			  }
 			  if ( (count($parts) == 3) && ($parts[1] == "afficher") && ($parts[0] == "contact")){
 					  $result["controller"] = "Contact";
