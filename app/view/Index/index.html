@@ -41,8 +41,15 @@
 				<li>Donner votre avis sur un album ou un artiste en commentaire, ou en notant.</li>
 				<li>Ajouter vos artistes et albums préférés dans notre base de données.</li>
 			</ul>
-		</p
+		</p>
 		<br>
+		<p>
+			<?php if(isset($_SESSION['droit']) && $_SESSION['droit'] == "administrateur") { ?>
+		<h4>Commande administrateur </h4><br>
+			<a href="<?php echo BASE_URL.'/administrateur/inscription';?>">Liste des demandes d'inscription</a><br>
+			<a href="<?php echo BASE_URL.'/administrateur/commentaire';?>">Liste des commentaires </a>
+			<?php } ?>
+		</p>
 		<br>
 		<?php if (isset($_SESSION['droit'])) { ?>
 		<p>
@@ -182,12 +189,6 @@
 			
 		<?php } ?>
 		<hr>
-		<p>
-			<?php if(isset($_SESSION['droit']) && $_SESSION['droit'] == "administrateur") { ?>
-			<a href="<?php echo BASE_URL.'/administrateur/inscription';?>">Liste des demandes d'inscription</a><br>
-			<a href="<?php echo BASE_URL.'/administrateur/commentaire';?>">Liste des commentaires </a>
-			<?php } ?>
-		</p>
 		<div class="text-center">
 			<a href="<?php echo BASE_URL;?>">page d'accueil</a>
 		</div>
