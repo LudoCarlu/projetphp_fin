@@ -42,7 +42,7 @@ class Note extends Model {
 			));
 		}
   }
-	public static function CalculMoyFromId ($idAl) {
+	/*public static function CalculMoyFromId ($idAl) {
 		$db = Database::getInstance();
 		//Verification si l'album a une note
 		$sql="SELECT * FROM note WHERE idAl=".$idAl;
@@ -63,7 +63,7 @@ class Note extends Model {
 			$stmt->fetch();
 			return $res2;
 		}
-	}
+	}*/
 	public static function listeNoteAlbum() {
 		$db = Database::getInstance();
 		$sql = "SELECT DISTINCT note FROM album ORDER BY note DESC";
