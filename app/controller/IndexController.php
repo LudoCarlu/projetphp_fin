@@ -9,7 +9,7 @@ class IndexController extends Controller {
       $this->view->listeArtiste = Artiste::getList();
       $this->view->listeGenre = Album::getListGenre();
       $this->view->utilisateur = Utilisateur::getList();
-      //$this->view->listeNote = Note::listeNoteAlbum();
+      $this->view->listeNote = Note::listeNoteAlbum();
       if(isset($_SESSION['dateDeco'])) {
         
         $this->view->actualite = Commentaire::listeComDerConnexion($_SESSION['dateDeco']);
