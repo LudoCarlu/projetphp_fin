@@ -22,7 +22,7 @@ class Database {
       $this->_db = new PDO(
          "mysql:host=dwarves.iut-fbleau.fr;dbname=carlu;charset=utf8",
          "carlu",
-         "ludo1811"
+         "mdp"
       );
    }
 }
